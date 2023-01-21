@@ -42,6 +42,8 @@ Drive::Drive(){
 
 void Drive::Periodic() {
     // Put code here to be run every loop
+    frc::SmartDashboard::PutNumber("Encoder Distance : ", m_encoderdistance);
+    frc::SmartDashboard::PutNumber("Encoder Rate : ", m_encoderrate);
 }
 
 void Drive::SimulationPeriodic() {

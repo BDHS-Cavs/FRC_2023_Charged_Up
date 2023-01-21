@@ -14,6 +14,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
+#include <frc/Encoder.h>
 #include <frc2/command/SubsystemBase.h>
 
 class Drive: public frc2::SubsystemBase {
@@ -33,6 +34,9 @@ private:
 
     frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};
 
+// Initializes an encoder on DIO pins 0 and 1
+    frc::Encoder encoder{0, 1, true, frc::Encoder::EncodingType::k1X}; // inverted and 1x
+    
 public:
     Drive();
 	
@@ -44,4 +48,6 @@ public:
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);
 
+    double m_encoderdistance = encoder.GetDistance();
+    double m_encoderrate = encoder.GetRate();
 };

@@ -25,6 +25,7 @@ Arm::Arm(){
 
 void Arm::Periodic() {
     // Put code here to be run every loop
+    frc::SmartDashboard::PutNumber("Arm Angle : ", m_potentiometer);
 }
 
 void Arm::SimulationPeriodic() {
