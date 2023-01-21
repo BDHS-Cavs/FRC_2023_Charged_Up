@@ -14,11 +14,11 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-AutonomousCommand::AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Shooter* m_shooter)
+AutonomousCommand::AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Claw* m_claw)
 :m_arm(m_arm),
 m_drive(m_drive),
 m_limelight(m_limelight),
-m_shooter(m_shooter)
+m_claw(m_claw)
 {
 
     // Use AddRequirements() here to declare subsystem dependencies
@@ -27,7 +27,7 @@ m_shooter(m_shooter)
     AddRequirements(m_arm);
     AddRequirements(m_drive);
     AddRequirements(m_limelight);
-    AddRequirements(m_shooter);
+    AddRequirements(m_claw);
 
     m_firstTime = true;
     m_timer.Reset();
@@ -58,13 +58,11 @@ void AutonomousCommand::Execute() {
 
     if (m_timer.Get() >= units::second_t(0_s) && m_timer.Get() < period1)
     {
-        // Intake & Expel are swapped
-        // Intake "really" means shoot
-        m_shooter->Intake(); // shoot the ball
+        //do nothing
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
-        m_shooter->ShooterStop(); // stop the shooter
+        m_claw->ClawStop(); // stop the Claw
         m_drive->AutoMotivateBackward(); // drive backwards 8 to 10 feet - about 3 seconds
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
@@ -90,7 +88,7 @@ bool AutonomousCommand::IsFinished() {
 void AutonomousCommand::End(bool interrupted) {
     m_arm->ArmStop();
     m_drive->Stop();
-    m_shooter->ShooterStop();
+    m_claw->ClawStop();
 
     m_firstTime = true;
 }

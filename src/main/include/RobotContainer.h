@@ -24,13 +24,11 @@
 #include "commands/ArmLowerCommand.h"
 #include "commands/ArmRaiseCommand.h"
 #include "commands/AutonomousCommand.h"
-#include "commands/IntakeCommand.h"
-#include "commands/ShootCommand.h"
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"
 #include "subsystems/Limelight.h"
-#include "subsystems/Shooter.h"
+#include "subsystems/Claw.h"
 
 class RobotContainer {
 
@@ -43,7 +41,7 @@ public:
     Arm       m_arm;
     Drive     m_drive;
     Limelight m_limelight;
-    Shooter   m_shooter;
+    Claw   m_claw;
 
     // Get the control values
     frc::Joystick *getJoystick();

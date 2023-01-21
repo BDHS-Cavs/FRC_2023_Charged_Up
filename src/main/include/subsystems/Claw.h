@@ -13,17 +13,15 @@
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
 
-class Shooter: public frc2::SubsystemBase {
+class Claw: public frc2::SubsystemBase {
 
 private:
-    frc::Spark m_shooterMotor{5}; //tuned value
+    frc::Spark m_clawMotor{5}; //tuned value
 
 public:
-    Shooter();
+    Claw();
 
     void Periodic() override;
     void SimulationPeriodic() override;
-    void Expel();
-    void Intake();
-    void ShooterStop();
+    void ClawStop();
 };

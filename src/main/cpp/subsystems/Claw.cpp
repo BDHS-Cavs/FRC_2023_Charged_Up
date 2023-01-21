@@ -8,41 +8,31 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-#include "subsystems/Shooter.h"
+#include "subsystems/Claw.h"
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
 
-Shooter::Shooter(){
-    SetName("Shooter");
-    SetSubsystem("Shooter");
+Claw::Claw(){
+    SetName("Claw");
+    SetSubsystem("Claw");
 
-    AddChild("ShooterMotor", &m_shooterMotor);
+    AddChild("ClawMotor", &m_clawMotor);
 
-    m_shooterMotor.SetInverted(false);
+    m_clawMotor.SetInverted(false);
 }
 
-void Shooter::Periodic() {
+void Claw::Periodic() {
     // Put code here to be run every loop
 }
 
-void Shooter::SimulationPeriodic() {
+void Claw::SimulationPeriodic() {
 }
 
 // Put methods for controlling this subsystem here and call from commands
 
-void Shooter::Expel(){
-    // Shoot balls
-    m_shooterMotor.Set(-1.0); 
-}
-
-void Shooter::Intake(){
-    // Intake balls
-    m_shooterMotor.Set(1.0); 
-}
-
-void Shooter::ShooterStop(){
-    // Stop the shooter
-    m_shooterMotor.Set(0.0); 
+void Claw::ClawStop(){
+    // Stop the Claw
+    m_clawMotor.Set(0.0); 
 }

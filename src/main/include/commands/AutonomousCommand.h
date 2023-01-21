@@ -18,11 +18,11 @@
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"
 #include "subsystems/Limelight.h"
-#include "subsystems/Shooter.h"
+#include "subsystems/Claw.h"
 
 class AutonomousCommand: public frc2::CommandHelper<frc2::CommandBase, AutonomousCommand> {
 public:
-    explicit AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Shooter* m_shooter);
+    explicit AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Claw* m_claw);
 
 void Initialize() override;
 void Execute() override;
@@ -38,5 +38,5 @@ private:
     Arm*       m_arm;
     Drive*     m_drive;
     Limelight* m_limelight;
-    Shooter*   m_shooter;
+    Claw*   m_claw;
 };
