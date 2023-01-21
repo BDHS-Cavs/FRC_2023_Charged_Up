@@ -21,8 +21,8 @@
 #include <frc2/command/button/JoystickButton.h>
 
 // our includes
-#include "commands/ArmLowerCommand.h"
-#include "commands/ArmRaiseCommand.h"
+#include "commands/ArmForwardCommand.h"
+#include "commands/ArmBackwardCommand.h"
 #include "commands/AutonomousCommand.h"
 
 #include "subsystems/Arm.h"

@@ -57,8 +57,8 @@ frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
 
 // TODO: Swap Out to Trigger.OnTrue()
-//m_controllerButton2.WhenHeld(ArmRaiseCommand(&m_arm), true); // Arm raise (2)
-//m_controllerButton4.WhenHeld(ArmLowerCommand(&m_arm), true); // Arm lower (4)
+//m_controllerButton2.WhenHeld(ArmBackwardCommand(&m_arm), true); // Arm raise (2)
+//m_controllerButton4.WhenHeld(ArmForwardCommand(&m_arm), true); // Arm lower (4)
 //m_controllerButton5.WhenHeld(IntakeCommand(&m_claw), true); // Intake (5)
 //m_controllerButton6.WhenHeld(ShootCommand(&m_claw), true); // Shoot (6)
 }

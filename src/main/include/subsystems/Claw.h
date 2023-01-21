@@ -23,5 +23,7 @@ public:
 
     void Periodic() override;
     void SimulationPeriodic() override;
+    void ClawOpen();
+    void ClawClose();
     void ClawStop();
 };

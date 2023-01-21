@@ -15,11 +15,10 @@
 
 #include "subsystems/Arm.h"
 
-class ArmRaiseCommand: public frc2::CommandHelper<frc2::CommandBase, ArmRaiseCommand> {
+class ArmForwardCommand: public frc2::CommandHelper<frc2::CommandBase, ArmForwardCommand> {
 
 public:
-
-    explicit ArmRaiseCommand(Arm* m_arm);
+    explicit ArmForwardCommand(Arm* m_arm);
 
     void Initialize() override;
     void Execute() override;

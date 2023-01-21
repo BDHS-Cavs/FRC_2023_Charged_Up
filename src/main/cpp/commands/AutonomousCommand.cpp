@@ -67,7 +67,7 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
     {
-        m_arm->ArmLower(); // lower the arm
+        m_arm->ArmForward(); // lower the arm
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4)
     {

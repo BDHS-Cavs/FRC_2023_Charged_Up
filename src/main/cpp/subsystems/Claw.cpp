@@ -32,6 +32,14 @@ void Claw::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 
+void Claw::ClawOpen(){
+    //Open the Claw
+}
+
+void Claw::ClawClose(){
+    //Close the Claw
+}
+
 void Claw::ClawStop(){
     // Stop the Claw
     m_clawMotor.Set(0.0); 

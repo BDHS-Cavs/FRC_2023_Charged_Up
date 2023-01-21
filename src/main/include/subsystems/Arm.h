@@ -18,13 +18,15 @@ class Arm: public frc2::SubsystemBase {
 
 private:
     frc::Spark m_armMotor{4}; //tuned value
-    frc::DigitalInput bottomLimitSwitch{2}; 
+    frc::DigitalInput frontLimitSwitch{2}; //tuned value
+    frc::DigitalInput backLimitSwitch{5}; //tuned value
 public:
     Arm();
 
     void Periodic() override;
     void SimulationPeriodic() override;
-    void ArmLower();
-    void ArmRaise();
+    void ArmExtend();
+    void ArmForward();
+    void ArmBackward();
     void ArmStop();
 };

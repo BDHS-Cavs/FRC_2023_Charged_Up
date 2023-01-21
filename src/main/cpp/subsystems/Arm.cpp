@@ -32,9 +32,9 @@ void Arm::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 
-void Arm::ArmLower(){ 
+void Arm::ArmForward(){ 
     // Lower Arm 
-    if (bottomLimitSwitch.Get())
+    if (frontLimitSwitch.Get())
     {
         this->ArmStop();
     }
@@ -43,9 +43,15 @@ void Arm::ArmLower(){
     } 
 }
 
-void Arm::ArmRaise(){
+void Arm::ArmBackward(){
     // Raise Arm
-    m_armMotor.Set(1.0);
+    if(backLimitSwitch.Get())
+    {
+        this->ArmStop();
+    }
+    else{
+    m_armMotor.Set(0.35);
+}
 }
 
 void Arm::ArmStop(){
