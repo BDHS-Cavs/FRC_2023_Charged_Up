@@ -28,7 +28,7 @@
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"
 #include "subsystems/Limelight.h"
-#include "subsystems/Claw.h"
+#include "subsystems/Grabber.h"
 
 class RobotContainer {
 
@@ -41,7 +41,7 @@ public:
     Arm       m_arm;
     Drive     m_drive;
     Limelight m_limelight;
-    Claw   m_claw;
+    Grabber   m_grabber;
 
     // Get the control values
     frc::Joystick *getJoystick();

@@ -14,11 +14,11 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-AutonomousCommand::AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Claw* m_claw)
+AutonomousCommand::AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Grabber* m_grabber)
 :m_arm(m_arm),
 m_drive(m_drive),
 m_limelight(m_limelight),
-m_claw(m_claw)
+m_grabber(m_grabber)
 {
 
     // Use AddRequirements() here to declare subsystem dependencies
@@ -27,7 +27,7 @@ m_claw(m_claw)
     AddRequirements(m_arm);
     AddRequirements(m_drive);
     AddRequirements(m_limelight);
-    AddRequirements(m_claw);
+    AddRequirements(m_grabber);
 
     m_firstTime = true;
     m_timer.Reset();
@@ -62,7 +62,7 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
-        m_claw->ClawStop(); // stop the Claw
+        m_grabber->GrabberStop(); // stop the Grabber
         m_drive->AutoMotivateBackward(); // drive backwards 8 to 10 feet - about 3 seconds
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
@@ -88,7 +88,7 @@ bool AutonomousCommand::IsFinished() {
 void AutonomousCommand::End(bool interrupted) {
     m_arm->ArmStop();
     m_drive->Stop();
-    m_claw->ClawStop();
+    m_grabber->GrabberStop();
 
     m_firstTime = true;
 }

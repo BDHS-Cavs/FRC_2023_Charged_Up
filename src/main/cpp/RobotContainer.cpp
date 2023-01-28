@@ -18,14 +18,14 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_arm, &m_drive, &m_limelight, &m_claw) {
+RobotContainer::RobotContainer() : m_autonomousCommand(&m_arm, &m_drive, &m_limelight, &m_grabber) {
     frc::SmartDashboard::PutData(&m_arm);
     frc::SmartDashboard::PutData(&m_drive);
     frc::SmartDashboard::PutData(&m_limelight);
-    frc::SmartDashboard::PutData(&m_claw);
+    frc::SmartDashboard::PutData(&m_grabber);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_claw));
+    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_grabber));
 	
     ConfigureButtonBindings();
 
@@ -39,7 +39,7 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_arm, &m_drive, &m_lime
         },
          {&m_drive}));
 
-    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_claw));
+    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_grabber));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 }
 
@@ -59,8 +59,8 @@ frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController
 // TODO: Swap Out to Trigger.OnTrue()
 //m_controllerButton2.WhenHeld(ArmBackwardCommand(&m_arm), true); // Arm raise (2)
 //m_controllerButton4.WhenHeld(ArmForwardCommand(&m_arm), true); // Arm lower (4)
-//m_controllerButton5.WhenHeld(IntakeCommand(&m_claw), true); // Intake (5)
-//m_controllerButton6.WhenHeld(ShootCommand(&m_claw), true); // Shoot (6)
+//m_controllerButton5.WhenHeld(IntakeCommand(&m_grabber), true); // Intake (5)
+//m_controllerButton6.WhenHeld(ShootCommand(&m_grabber), true); // Shoot (6)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

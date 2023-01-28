@@ -14,18 +14,18 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/DoubleSolenoid.h>
 
-class Claw: public frc2::SubsystemBase {
+class Grabber: public frc2::SubsystemBase {
 
 private:
-    frc::Spark m_clawMotor{5}; //TODO: Do we need a motor here? && tuned value
-    frc::DoubleSolenoid m_clawSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1}; //TODO: Correct Module Type? && Tuned Values
+    frc::Spark m_grabberMotor{5}; //TODO: Do we need a motor here? && tuned value
+    frc::DoubleSolenoid m_grabberSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1}; //TODO: Correct Module Type? && Tuned Values
 
 public:
-    Claw();
+    Grabber();
 
     void Periodic() override;
     void SimulationPeriodic() override;
-    void ClawOpen();
-    void ClawClose();
-    void ClawStop();
+    void GrabberOpen();
+    void GrabberClose();
+    void GrabberStop();
 };
