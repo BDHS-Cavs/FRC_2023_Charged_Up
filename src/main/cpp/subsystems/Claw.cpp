@@ -34,13 +34,16 @@ void Claw::SimulationPeriodic() {
 
 void Claw::ClawOpen(){
     //Open the Claw
+    m_clawSolenoid.Set(frc::DoubleSolenoid::Value::kForward); //TODO: Is this the right direction?
 }
 
 void Claw::ClawClose(){
     //Close the Claw
+    m_clawSolenoid.Set(frc::DoubleSolenoid::Value::kReverse); //TODO: Is this the right direction?
 }
 
 void Claw::ClawStop(){
     // Stop the Claw
-    m_clawMotor.Set(0.0); 
+    m_clawMotor.Set(0.0); //TODO: Do we need a motor here?
+    m_clawSolenoid.Set(frc::DoubleSolenoid::Value::kOff); //TODO: Is this correct?
 }
