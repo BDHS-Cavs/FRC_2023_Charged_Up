@@ -33,6 +33,18 @@ void Arm::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 
+void Arm::ArmExtend(){ 
+    // Extend Arm 
+
+    //extend code here
+}
+
+void Arm::ArmRetract(){ 
+    // Retract Arm 
+
+    //retract code here
+}
+
 void Arm::ArmForward(){ 
     // Lower Arm 
     if (frontLimitSwitch.Get())

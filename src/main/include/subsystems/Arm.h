@@ -28,6 +28,7 @@ public:
     void Periodic() override;
     void SimulationPeriodic() override;
     void ArmExtend();
+    void ArmRetract();
     void ArmForward();
     void ArmBackward();
     void ArmStop();
