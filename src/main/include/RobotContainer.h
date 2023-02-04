@@ -23,6 +23,8 @@
 // our includes
 #include "commands/ArmForwardCommand.h"
 #include "commands/ArmBackwardCommand.h"
+#include "commands/GrabberCloseCommand.h"
+#include "commands/GrabberOpenCommand.h"
 #include "commands/AutonomousCommand.h"
 
 #include "subsystems/Arm.h"

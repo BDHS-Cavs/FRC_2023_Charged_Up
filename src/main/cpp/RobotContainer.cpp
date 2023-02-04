@@ -57,6 +57,12 @@ frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
 
 // TODO: Swap Out to Trigger.OnTrue()
+m_controllerButton2.OnTrue(ArmBackwardCommand(&m_arm).ToPtr());      // Arm backward (2)
+m_controllerButton4.OnTrue(ArmForwardCommand(&m_arm).ToPtr());       // Arm forward (4)
+m_controllerButton5.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr()); // Grabber close (5)
+m_controllerButton6.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());  // Grabber open (6)
+
+// TODO: Delete funky old code below when new stuff is proven to be working
 //m_controllerButton2.WhenHeld(ArmBackwardCommand(&m_arm), true); // Arm raise (2)
 //m_controllerButton4.WhenHeld(ArmForwardCommand(&m_arm), true); // Arm lower (4)
 //m_controllerButton5.WhenHeld(IntakeCommand(&m_grabber), true); // Intake (5)
