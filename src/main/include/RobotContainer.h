@@ -26,6 +26,8 @@
 #include "commands/GrabberCloseCommand.h"
 #include "commands/GrabberOpenCommand.h"
 #include "commands/AutonomousCommand.h"
+#include "commands/ArmExtendCommand.h"
+#include "commands/ArmRetractCommand.h"
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"

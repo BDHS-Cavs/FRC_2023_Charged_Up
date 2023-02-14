@@ -21,13 +21,13 @@ class Drive: public frc2::SubsystemBase {
 private:
 
     // left
-    frc::Spark m_leftFront{0};
-    frc::Spark m_leftRear{1};
+    frc::Spark m_leftFront{2};
+    frc::Spark m_leftRear{3};
     frc::MotorControllerGroup m_controllerLeft{m_leftFront, m_leftRear};
 
     // right
-    frc::Spark m_rightFront{2};
-    frc::Spark m_rightRear{3};
+    frc::Spark m_rightFront{4};
+    frc::Spark m_rightRear{5};
     frc::MotorControllerGroup m_controllerRight{m_rightFront, m_rightRear};
 
     frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};

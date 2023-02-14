@@ -18,14 +18,16 @@ Arm::Arm(){
     SetName("Arm");
     SetSubsystem("Arm");
 
-    AddChild("ArmMotor", &m_armMotor);
+    AddChild("ArmPivotMotor", &m_armPivotMotor);
+    AddChild("ArmExtendMotor", &m_armExtendMotor);
     
-	m_armMotor.SetInverted(false);
+	m_armPivotMotor.SetInverted(false);
+    m_armExtendMotor.SetInverted(false);
 }
 
 void Arm::Periodic() {
     // Put code here to be run every loop
-    frc::SmartDashboard::PutNumber("Arm Angle : ", m_potentiometer);
+    //frc::SmartDashboard::PutNumber("Arm Angle : ", m_potentiometer);
 }
 
 void Arm::SimulationPeriodic() {
@@ -35,39 +37,30 @@ void Arm::SimulationPeriodic() {
 
 void Arm::ArmExtend(){ 
     // Extend Arm 
-
-    //extend code here
+        m_armExtendMotor.Set(0.40); 
 }
 
 void Arm::ArmRetract(){ 
     // Retract Arm 
-
-    //retract code here
+        m_armExtendMotor.Set(-0.40); 
 }
 
 void Arm::ArmForward(){ 
     // Lower Arm 
-    if (frontLimitSwitch.Get())
-    {
-        this->ArmStop();
-    }
-    else { 
-        m_armMotor.Set(-0.35); 
-    } 
+        m_armPivotMotor.Set(-0.50); 
 }
 
 void Arm::ArmBackward(){
     // Raise Arm
-    if(backLimitSwitch.Get())
-    {
-        this->ArmStop();
-    }
-    else{
-    m_armMotor.Set(0.35);
-}
+    m_armPivotMotor.Set(0.50);
 }
 
-void Arm::ArmStop(){
+void Arm::ArmPivotStop(){
     // stop the arm
-    m_armMotor.Set(0.0);
+    m_armPivotMotor.Set(0.0);
+}
+
+void Arm::ArmExtendStop(){
+    // stop the arm
+    m_armExtendMotor.Set(0.0);
 }

@@ -18,10 +18,11 @@ Grabber::Grabber(){
     SetName("Grabber");
     SetSubsystem("Grabber");
 
-    AddChild("GrabberMotor", &m_grabberMotor);
-
-    m_grabberMotor.SetInverted(false);
+    AddChild("GrabberSolenoid", &m_grabberSolenoid);
 }
+
+
+
 
 void Grabber::Periodic() {
     // Put code here to be run every loop
@@ -42,8 +43,17 @@ void Grabber::GrabberClose(){
     m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kReverse); //TODO: Is this the right direction?
 }
 
+void Grabber::CompressorEnable(){
+    //Enable the Compressor
+    m_compressor.EnableDigital(); //check with build team
+}
+
+void Grabber::CompressorDisable(){
+    //Disable the Compressor
+    m_compressor.Disable();
+}
+
 void Grabber::GrabberStop(){
     // Stop the Grabber
-    m_grabberMotor.Set(0.0); //TODO: Do we need a motor here?
     m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kOff); //TODO: Is this correct?
 }

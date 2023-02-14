@@ -86,7 +86,8 @@ bool AutonomousCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonomousCommand::End(bool interrupted) {
-    m_arm->ArmStop();
+    m_arm->ArmPivotStop();
+    m_arm->ArmExtendStop();
     m_drive->Stop();
     m_grabber->GrabberStop();
 

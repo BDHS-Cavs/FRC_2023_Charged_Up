@@ -35,7 +35,7 @@ bool ArmBackwardCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void ArmBackwardCommand::End(bool interrupted) {
-    m_arm->ArmStop();
+    m_arm->ArmPivotStop();
 }
 
 bool ArmBackwardCommand::RunsWhenDisabled() const {

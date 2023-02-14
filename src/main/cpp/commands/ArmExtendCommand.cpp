@@ -35,7 +35,7 @@ bool ArmExtendCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void ArmExtendCommand::End(bool interrupted) {
-    m_arm->ArmStop();
+    m_arm->ArmExtendStop();
 }
 
 bool ArmExtendCommand::RunsWhenDisabled() const {

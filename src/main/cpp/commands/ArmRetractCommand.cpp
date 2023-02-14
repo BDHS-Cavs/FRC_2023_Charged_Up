@@ -35,7 +35,7 @@ bool ArmRetractCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void ArmRetractCommand::End(bool interrupted) {
-    m_arm->ArmStop();
+    m_arm->ArmExtendStop();
 }
 
 bool ArmRetractCommand::RunsWhenDisabled() const {

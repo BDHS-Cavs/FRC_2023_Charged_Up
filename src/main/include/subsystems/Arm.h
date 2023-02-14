@@ -12,16 +12,17 @@
 
 #include <frc/DigitalInput.h> 
 #include <frc/motorcontrol/Spark.h>
-#include <frc/AnalogPotentiometer.h>
+//#include <frc/AnalogPotentiometer.h>
 #include <frc2/command/SubsystemBase.h>
 
 class Arm: public frc2::SubsystemBase {
 
 private:
-    frc::Spark m_armMotor{4}; //tuned value
-    frc::DigitalInput frontLimitSwitch{2}; //tuned value
-    frc::DigitalInput backLimitSwitch{5}; //tuned value
-    frc::AnalogPotentiometer potentiometer{0, 180, 30};
+    frc::Spark m_armPivotMotor{1}; //tuned value
+    frc::Spark m_armExtendMotor{0}; //tuned value
+    //frc::DigitalInput frontLimitSwitch{2}; //tuned value
+    //frc::DigitalInput backLimitSwitch{5}; //tuned value
+    //frc::AnalogPotentiometer potentiometer{0, 180, 30};
 public:
     Arm();
 
@@ -31,6 +32,7 @@ public:
     void ArmRetract();
     void ArmForward();
     void ArmBackward();
-    void ArmStop();
-    double m_potentiometer = potentiometer.Get();
+    void ArmPivotStop();
+    void ArmExtendStop();
+    //double m_potentiometer = potentiometer.Get();
 };

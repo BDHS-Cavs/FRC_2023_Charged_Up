@@ -13,12 +13,13 @@
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc/DoubleSolenoid.h>
+#include <frc/Compressor.h>
 
 class Grabber: public frc2::SubsystemBase {
 
 private:
-    frc::Spark m_grabberMotor{5}; //TODO: Do we need a motor here? && tuned value
     frc::DoubleSolenoid m_grabberSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1}; //TODO: Correct Module Type? && Tuned Values
+    frc::Compressor m_compressor{frc::PneumaticsModuleType::REVPH};
 
 public:
     Grabber();
@@ -27,5 +28,7 @@ public:
     void SimulationPeriodic() override;
     void GrabberOpen();
     void GrabberClose();
+    void CompressorEnable();
+    void CompressorDisable();
     void GrabberStop();
 };
