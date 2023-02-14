@@ -17,7 +17,7 @@
 #include <wpi/raw_ostream.h> // for wpi outs()
 
 void Robot::RobotInit() {
-  my_gyro.Calibrate();
+//code to be run
 }
 
 /**
@@ -54,9 +54,6 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
-  // tell us some details about our gyro
-  frc::SmartDashboard::PutNumber("Gyro Angle", my_gyro.GetAngle());
-  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", my_gyro.GetRate());
   m_autonomousCommand->Execute();
 }
 
@@ -75,9 +72,7 @@ void Robot::TeleopInit() {
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
-  // tell us some details about our gyro
-  frc::SmartDashboard::PutNumber("Gyro Angle", my_gyro.GetAngle());
-  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", my_gyro.GetRate());
+//code to be run
 }
 
 /**

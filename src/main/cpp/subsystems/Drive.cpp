@@ -36,8 +36,6 @@ Drive::Drive(){
 
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
-
-    AddChild("m_drive_gyro", &m_drive_gyro);
 }
 
 void Drive::Periodic() {

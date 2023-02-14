@@ -18,6 +18,7 @@
 class ArmForwardCommand: public frc2::CommandHelper<frc2::CommandBase, ArmForwardCommand> {
 
 public:
+
     explicit ArmForwardCommand(Arm* m_arm);
 
     void Initialize() override;

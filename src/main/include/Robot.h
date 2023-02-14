@@ -11,7 +11,6 @@
 // ROBOTBUILDER TYPE: Robot.
 #pragma once
 
-#include <frc/ADXRS450_Gyro.h>
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 
@@ -33,9 +32,6 @@ class Robot : public frc::TimedRobot {
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc2::Command* m_autonomousCommand = nullptr;
-
-  // gyro
-  frc::ADXRS450_Gyro my_gyro;
 
   RobotContainer* m_container = RobotContainer::GetInstance();
 };

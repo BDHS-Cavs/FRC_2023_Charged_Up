@@ -21,7 +21,9 @@
 #include "subsystems/Grabber.h"
 
 class AutonomousCommand: public frc2::CommandHelper<frc2::CommandBase, AutonomousCommand> {
+
 public:
+
     explicit AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Grabber* m_grabber);
 
 void Initialize() override;
