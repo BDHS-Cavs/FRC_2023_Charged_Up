@@ -28,6 +28,8 @@
 #include "commands/AutonomousCommand.h"
 #include "commands/ArmExtendCommand.h"
 #include "commands/ArmRetractCommand.h"
+#include "commands/CompressorEnableCommand.h"
+#include "commands/CompressorDisableCommand.h"
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"

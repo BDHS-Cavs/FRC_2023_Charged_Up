@@ -18,10 +18,13 @@ Arm::Arm(){
     SetName("Arm");
     SetSubsystem("Arm");
 
-    AddChild("ArmPivotMotor", &m_armPivotMotor);
+    AddChild("ArmPivotMotor1", &m_armPivotMotor1);
+    AddChild("ArmPivotMotor2", &m_armPivotMotor2);
+        m_armPivotMotor2.SetInverted(true);
     AddChild("ArmExtendMotor", &m_armExtendMotor);
+    AddChild("m_armPivotMotors", &m_armPivotMotors);
     
-	m_armPivotMotor.SetInverted(false);
+	m_armPivotMotors.SetInverted(false);
     m_armExtendMotor.SetInverted(false);
 }
 
@@ -47,17 +50,17 @@ void Arm::ArmRetract(){
 
 void Arm::ArmForward(){ 
     // Lower Arm 
-        m_armPivotMotor.Set(-0.25); 
+        m_armPivotMotors.Set(-0.50); 
 }
 
 void Arm::ArmBackward(){
     // Raise Arm
-    m_armPivotMotor.Set(0.25);
+    m_armPivotMotors.Set(0.50);
 }
 
 void Arm::ArmPivotStop(){
     // stop the arm
-    m_armPivotMotor.Set(0.0);
+    m_armPivotMotors.Set(0.0);
 }
 
 void Arm::ArmExtendStop(){

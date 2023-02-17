@@ -19,6 +19,7 @@ Grabber::Grabber(){
     SetSubsystem("Grabber");
 
     AddChild("GrabberSolenoid", &m_grabberSolenoid);
+    AddChild("Compressor", &m_compressor);
 }
 
 
@@ -45,7 +46,7 @@ void Grabber::GrabberClose(){
 
 void Grabber::CompressorEnable(){
     //Enable the Compressor
-    m_compressor.EnableDigital(); //check with build team
+    m_compressor.EnableAnalog(MIN 80, MAX 120 /*https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_compressor.html#abdc6669103f5f32add7b2a716ab6be9e*/); //check with build team
 }
 
 void Grabber::CompressorDisable(){
