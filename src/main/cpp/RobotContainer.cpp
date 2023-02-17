@@ -64,7 +64,7 @@ m_controllerButton4.OnTrue(ArmForwardCommand(&m_arm).ToPtr());       // Arm forw
 m_controllerButton5.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr()); // Grabber close (5)
 m_controllerButton6.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());  // Grabber open (6)
 m_controllerButton1.WhileTrue(ArmExtendCommand(&m_arm).ToPtr()); // Arm Extend (1)
-m_controllerButton3.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());  // Arm Retract (3) (6)
+m_controllerButton3.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());  // Arm Retract (3)
 
 // TODO: Delete funky old code below when new stuff is proven to be working
 //m_controllerButton2.WhenHeld(ArmBackwardCommand(&m_arm), true); // Arm raise (2)
