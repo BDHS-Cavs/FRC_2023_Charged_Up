@@ -12,7 +12,7 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
-
+#include <units/pressure.h>
 
 Grabber::Grabber(){
     SetName("Grabber");
@@ -21,9 +21,6 @@ Grabber::Grabber(){
     AddChild("GrabberSolenoid", &m_grabberSolenoid);
     AddChild("Compressor", &m_compressor);
 }
-
-
-
 
 void Grabber::Periodic() {
     // Put code here to be run every loop
@@ -46,7 +43,10 @@ void Grabber::GrabberClose(){
 
 void Grabber::CompressorEnable(){
     //Enable the Compressor
-    m_compressor.EnableAnalog(MIN 80, MAX 120 /*https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_compressor.html#abdc6669103f5f32add7b2a716ab6be9e*/); //check with build team
+    double MIN = 80.0;
+    double MAX = 115.0;
+
+    m_compressor.EnableAnalog((units::pressure::pounds_per_square_inch_t) MIN, (units::pressure::pounds_per_square_inch_t) MAX);
 }
 
 void Grabber::CompressorDisable(){

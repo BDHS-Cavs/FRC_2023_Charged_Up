@@ -19,7 +19,7 @@ class Grabber: public frc2::SubsystemBase {
 
 private:
     frc::DoubleSolenoid m_grabberSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1}; //TODO: Correct Module Type? && Tuned Values
-    frc::Compressor m_compressor{0, frc::PneumaticsModuleType::REVPH};
+    frc::Compressor m_compressor{frc::PneumaticsModuleType::REVPH};
 
 public:
     Grabber();
