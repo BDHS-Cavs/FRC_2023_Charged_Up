@@ -49,13 +49,13 @@ void Arm::ArmRetract(){
 }
 
 void Arm::ArmForward(){ 
-    // Lower Arm
-    m_armPivotMotors.Set(-0.5);
+    // Raise Arm
+    m_armPivotMotors.Set(-0.375);
 }
 
 void Arm::ArmBackward(){
-    // Raise Arm
-    m_armPivotMotors.Set(0.5);
+    // Lower Arm
+    m_armPivotMotors.Set(0.2978);
 }
 
 void Arm::ArmPivotStop(){
