@@ -65,7 +65,7 @@ m_controllerButton5.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr());           /
 m_controllerButton6.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());            // Grabber open (6)
 m_controllerButton1.WhileTrue(ArmExtendCommand(&m_arm).ToPtr());               // Arm Extend (1)
 m_controllerButton3.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());              // Arm Retract (3)
-m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); //Enable Compressor (7)
+m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); // Compressor Enable (7)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

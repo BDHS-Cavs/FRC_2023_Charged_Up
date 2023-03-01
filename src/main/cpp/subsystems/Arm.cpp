@@ -40,12 +40,12 @@ void Arm::SimulationPeriodic() {
 
 void Arm::ArmExtend(){ 
     // Extend Arm 
-        m_armExtendMotor.Set(0.25); 
+        m_armExtendMotor.Set(0.5); 
 }
 
 void Arm::ArmRetract(){ 
     // Retract Arm 
-        m_armExtendMotor.Set(-0.25); 
+        m_armExtendMotor.Set(-0.5); 
 }
 
 void Arm::ArmForward(){ 
@@ -60,7 +60,8 @@ void Arm::ArmBackward(){
 
 void Arm::ArmPivotStop(){
     // stop the arm
-    m_armPivotMotors.Set(0.0);
+    //m_armPivotMotors.Set(0.0);
+    m_armPivotMotors.StopMotor();
 }
 
 void Arm::ArmExtendStop(){
