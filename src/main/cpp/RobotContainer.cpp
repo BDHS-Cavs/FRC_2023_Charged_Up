@@ -57,14 +57,15 @@ frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
 frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           // Arm Extend (1)
 frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Arm Retract (3)
+frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};        // Compressor Enable (7)
 
-m_controllerButton2.WhileTrue(ArmBackwardCommand(&m_arm).ToPtr());         // Arm backward (2)
-m_controllerButton4.WhileTrue(ArmForwardCommand(&m_arm).ToPtr());          // Arm forward (4)
-m_controllerButton5.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr());       // Grabber close (5)
-m_controllerButton6.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());        // Grabber open (6)
-m_controllerButton1.WhileTrue(ArmExtendCommand(&m_arm).ToPtr());           // Arm Extend (1)
-m_controllerButton3.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());          // Arm Retract (3)
-
+m_controllerButton2.WhileTrue(ArmBackwardCommand(&m_arm).ToPtr());             // Arm backward (2)
+m_controllerButton4.WhileTrue(ArmForwardCommand(&m_arm).ToPtr());              // Arm forward (4)
+m_controllerButton5.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr());           // Grabber close (5)
+m_controllerButton6.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());            // Grabber open (6)
+m_controllerButton1.WhileTrue(ArmExtendCommand(&m_arm).ToPtr());               // Arm Extend (1)
+m_controllerButton3.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());              // Arm Retract (3)
+m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); //Enable Compressor (7)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

@@ -16,12 +16,6 @@
 #include <frc2/command/CommandScheduler.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-#include <frc/Compressor.h>
-    frc::Compressor m_compressor{frc::PneumaticsModuleType::REVPH};
-    double MIN = 80.0;
-    double MAX = 115.0;
-
-
 
 void Robot::RobotInit() {
 //code to be run
@@ -58,7 +52,6 @@ void Robot::AutonomousInit() {
   if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Schedule();
   }
-      m_compressor.EnableAnalog((units::pressure::pounds_per_square_inch_t) MIN, (units::pressure::pounds_per_square_inch_t) MAX);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -74,7 +67,6 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
-    m_compressor.EnableAnalog((units::pressure::pounds_per_square_inch_t) MIN, (units::pressure::pounds_per_square_inch_t) MAX);
 }
 
 /**
