@@ -51,7 +51,10 @@ void Robot::AutonomousInit() {
   if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Schedule();
   }
-  CompressorEnableCommand::Initialize;
+    double MIN = 80.0;
+    double MAX = 115.0;
+
+    m_robotCompressor.EnableAnalog((units::pressure::pounds_per_square_inch_t) MIN, (units::pressure::pounds_per_square_inch_t) MAX);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -67,7 +70,10 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
-    CompressorEnableCommand::Initialize;
+    double MIN = 80.0;
+    double MAX = 115.0;
+
+    m_robotCompressor.EnableAnalog((units::pressure::pounds_per_square_inch_t) MIN, (units::pressure::pounds_per_square_inch_t) MAX);
 }
 
 /**
