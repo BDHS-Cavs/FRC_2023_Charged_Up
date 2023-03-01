@@ -16,6 +16,11 @@
 
 #include "RobotContainer.h"
 
+#include <commands/CompressorEnableCommand.h>
+#include <commands/CompressorDisableCommand.h>
+
+
+
 class Robot : public frc::TimedRobot {
  public:
   void RobotInit() override;

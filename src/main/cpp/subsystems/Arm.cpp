@@ -50,12 +50,12 @@ void Arm::ArmRetract(){
 
 void Arm::ArmForward(){ 
     // Raise Arm
-    m_armPivotMotors.Set(-0.375);
+    m_armPivotMotors.Set(-0.5);
 }
 
 void Arm::ArmBackward(){
     // Lower Arm
-    m_armPivotMotors.Set(0.2978);
+    m_armPivotMotors.Set(0.5);
 }
 
 void Arm::ArmPivotStop(){

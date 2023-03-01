@@ -51,6 +51,7 @@ void Robot::AutonomousInit() {
   if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Schedule();
   }
+  CompressorEnableCommand::Initialize;
 }
 
 void Robot::AutonomousPeriodic() {
@@ -66,6 +67,7 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
+    CompressorEnableCommand::Initialize;
 }
 
 /**
