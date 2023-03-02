@@ -16,6 +16,7 @@
 
 #include "RobotContainer.h"
 
+#include <cameraserver/CameraServer.h>
 
 class Robot : public frc::TimedRobot {
  public:
@@ -35,5 +36,5 @@ class Robot : public frc::TimedRobot {
   frc2::Command* m_autonomousCommand = nullptr;
 
   RobotContainer* m_container = RobotContainer::GetInstance();
-  
+
 };
