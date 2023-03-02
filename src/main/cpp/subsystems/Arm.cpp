@@ -32,6 +32,7 @@ Arm::Arm(){
 void Arm::Periodic() {
     // Put code here to be run every loop
     //frc::SmartDashboard::PutNumber("Arm Angle : ", m_potentiometer);
+        frc::SmartDashboard::PutNumber("Arm Speed", armspeed);
 }
 
 void Arm::SimulationPeriodic() {
@@ -88,10 +89,12 @@ void Arm::ArmExtendStop(){
 
 void Arm::ArmSpeedUp(){
     //speed up the arm
+    if(armspeed==0)
+    {
     int armspeed = 1;
-}
-
-void Arm::ArmSlowDown(){
-    //slow down the arm
-    int armspeed = 0;
+    }
+    else if(armspeed==1)
+    {
+    int armspeed=0;
+    }
 }
