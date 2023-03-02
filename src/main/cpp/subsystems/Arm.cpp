@@ -22,6 +22,7 @@ Arm::Arm(){
     AddChild("ArmPivotMotor2", &m_armPivotMotor2);
     AddChild("ArmExtendMotor", &m_armExtendMotor);
     AddChild("m_armPivotMotors", &m_armPivotMotors);
+    AddChild("m_armLockSolenoid", &m_armLockSolenoid);
     
     m_armPivotMotor2.SetInverted(true);
     m_armPivotMotor1.SetInverted(false);
@@ -50,21 +51,47 @@ void Arm::ArmRetract(){
 
 void Arm::ArmForward(){ 
     // Raise Arm
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+    if(armspeed==0)
+    {
     m_armPivotMotors.Set(-0.5);
+    }
+    else if(armspeed==1)
+    {
+    m_armPivotMotors.Set(-0.8);
+    }
 }
 
 void Arm::ArmBackward(){
     // Lower Arm
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+    if(armspeed==0)
+    {
     m_armPivotMotors.Set(0.5);
+    }
+    else if(armspeed==1)
+    {
+    m_armPivotMotors.Set(0.8);
+    }
 }
 
 void Arm::ArmPivotStop(){
     // stop the arm
-    //m_armPivotMotors.Set(0.0);
-    m_armPivotMotors.StopMotor();
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
+    m_armPivotMotors.Set(0.0);
 }
 
 void Arm::ArmExtendStop(){
     // stop the arm
     m_armExtendMotor.Set(0.0);
+}
+
+void Arm::ArmSpeedUp(){
+    //speed up the arm
+    int armspeed = 1;
+}
+
+void Arm::ArmSlowDown(){
+    //slow down the arm
+    int armspeed = 0;
 }

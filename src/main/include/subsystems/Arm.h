@@ -15,6 +15,7 @@
 //#include <frc/AnalogPotentiometer.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
+#include <frc/DoubleSolenoid.h>
 
 class Arm: public frc2::SubsystemBase {
 
@@ -23,6 +24,11 @@ private:
     frc::Spark m_armPivotMotor2{6}; //tuned value
     frc::MotorControllerGroup m_armPivotMotors{m_armPivotMotor1, m_armPivotMotor2};
     frc::Spark m_armExtendMotor{0}; //tuned value
+
+    frc::DoubleSolenoid m_armLockSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1}; //TODO: Correct Module Type? && Tuned Values
+
+    int armspeed = 0;
+
     //frc::DigitalInput frontLimitSwitch{2}; //tuned value
     //frc::DigitalInput backLimitSwitch{5}; //tuned value
     //frc::AnalogPotentiometer potentiometer{0, 180, 30};
@@ -37,5 +43,6 @@ public:
     void ArmBackward();
     void ArmPivotStop();
     void ArmExtendStop();
+    void ArmSpeedUp();
     //double m_potentiometer = potentiometer.Get();
 };
