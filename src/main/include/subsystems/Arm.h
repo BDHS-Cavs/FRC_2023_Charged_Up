@@ -25,13 +25,14 @@ private:
     frc::MotorControllerGroup m_armPivotMotors{m_armPivotMotor1, m_armPivotMotor2};
     frc::Spark m_armExtendMotor{0}; //tuned value
 
-    frc::DoubleSolenoid m_armLockSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1}; //TODO: Correct Module Type? && Tuned Values
-
-    int armspeed = 0;
+    frc::DoubleSolenoid m_armLockSolenoid{frc::PneumaticsModuleType::REVPH, 2, 3}; //TODO: Correct Module Type? && Tuned Values
 
     //frc::DigitalInput frontLimitSwitch{2}; //tuned value
     //frc::DigitalInput backLimitSwitch{5}; //tuned value
     //frc::AnalogPotentiometer potentiometer{0, 180, 30};
+        
+        bool armspeed;
+
 public:
     Arm();
 

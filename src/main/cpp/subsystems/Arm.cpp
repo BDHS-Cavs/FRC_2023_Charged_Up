@@ -27,12 +27,14 @@ Arm::Arm(){
     m_armPivotMotor2.SetInverted(true);
     m_armPivotMotor1.SetInverted(false);
     m_armExtendMotor.SetInverted(false);
+    armspeed = false;
 }
 
 void Arm::Periodic() {
     // Put code here to be run every loop
     //frc::SmartDashboard::PutNumber("Arm Angle : ", m_potentiometer);
         frc::SmartDashboard::PutNumber("Arm Speed", armspeed);
+        frc::SmartDashboard::PutNumber("Arm MOTOR Speed", armspeed);
 }
 
 void Arm::SimulationPeriodic() {
@@ -78,7 +80,7 @@ void Arm::ArmBackward(){
 
 void Arm::ArmPivotStop(){
     // stop the arm
-    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
     m_armPivotMotors.Set(0.0);
 }
 
