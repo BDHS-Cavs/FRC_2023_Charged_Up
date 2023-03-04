@@ -30,7 +30,6 @@
 #include "commands/ArmRetractCommand.h"
 #include "commands/CompressorEnableCommand.h"
 #include "commands/CompressorDisableCommand.h"
-#include "commands/ArmSpeedUpCommand.h"
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"

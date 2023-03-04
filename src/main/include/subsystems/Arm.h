@@ -30,8 +30,6 @@ private:
     //frc::DigitalInput frontLimitSwitch{2}; //tuned value
     //frc::DigitalInput backLimitSwitch{5}; //tuned value
     //frc::AnalogPotentiometer potentiometer{0, 180, 30};
-        
-        bool armspeed;
 
 public:
     Arm();
@@ -44,6 +42,5 @@ public:
     void ArmBackward();
     void ArmPivotStop();
     void ArmExtendStop();
-    void ArmSpeedUp();
     //double m_potentiometer = potentiometer.Get();
 };
