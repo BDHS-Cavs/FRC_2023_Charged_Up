@@ -79,6 +79,56 @@ void AutonomousCommand::Execute() {
     }
 }
 
+void AutonomousCommand::ExecuteModeA() {
+
+    units::second_t period1 = 1_s;
+    units::second_t period2 = 2_s;
+    units::second_t period3 = 5_s;
+    units::second_t period4 = 8_s;
+    units::second_t period5 = 11_s;
+    units::second_t period6 = 12_s;
+    
+    if(m_firstTime)
+    {
+        m_timer.Reset();
+        m_firstTime = false;
+    }
+
+    m_timer.Start();
+
+    frc::SmartDashboard::PutNumber("Autonomous Command Timer", double(m_timer.Get()));
+
+    if (m_timer.Get() >= units::second_t(0_s) && m_timer.Get() < period1) 
+    {
+        //do nothing
+    }
+    else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
+    {
+        //m_grabber->GrabberStop(); // stop the Grabber ------ do we need this?
+        m_grabber->CompressorEnable(); //just incase we need it (we might want to remove this)
+        m_grabber->GrabberClose(); //make sure the loaded piece is grabbed
+        m_drive->AutoMotivateBackward(); // drive backwards about 3 seconds
+    }
+    else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
+    {
+        m_arm->ArmBackward(); // raise the arm
+    }
+    
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4)
+    {
+        m_grabber->GrabberOpen(); //release the loaded piece
+    }
+    else if(m_timer.Get() >= period4 && m_timer.Get() < period5)
+    {
+        m_drive->AutoMotivateRotate(); //rotate 180
+    }
+    else
+    {
+        // do nothing
+    }
+
+}
+
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousCommand::IsFinished() {
     return false;

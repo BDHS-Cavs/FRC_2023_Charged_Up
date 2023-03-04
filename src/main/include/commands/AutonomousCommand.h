@@ -28,6 +28,7 @@ public:
 
 void Initialize() override;
 void Execute() override;
+void ExecuteModeA() override;
 bool IsFinished() override;
 void End(bool interrupted) override;
 bool RunsWhenDisabled() const override;
