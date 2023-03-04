@@ -54,6 +54,17 @@ void Drive::Motivate(double leftSpeed, double rightSpeed) {
     m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
 }
 
+void Drive::AutoMotivateForward() {
+
+    double autoForwardXSpeed  = 0.50;
+    double autoForwardYSpeed  = 0.50;
+
+    m_differentialDrive.ArcadeDrive(autoForwardXSpeed, autoForwardYSpeed, true);
+
+    frc::SmartDashboard::PutNumber("AutoMotivateForward X Speed", autoForwardXSpeed);
+    frc::SmartDashboard::PutNumber("AutomotivateForward Y Speed", autoForwardYSpeed);
+}
+
 void Drive::AutoMotivateBackward() {
 
     double autoXSpeed  = 0.65;
@@ -76,6 +87,10 @@ void Drive::AutoMotivateRotate() {
     frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
 }
 
+void Drive::ResetEncoder() {
+    // is there something to do here?
+}
+
 bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
 {
     if (fabs(x - y) < epsilon)
@@ -88,6 +103,10 @@ bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
         return false;
         wpi::outs() << "returning false in compareangles!\n";
     };
+}
+
+double Drive::GetAverageEncoderDistance() {
+    // do nothing here, yet
 }
 
 void Drive::Stop(){

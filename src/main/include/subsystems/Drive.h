@@ -42,10 +42,13 @@ public:
     void Periodic() override;
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
+    void AutoMotivateForward();
     void AutoMotivateBackward();
     void AutoMotivateRotate();
+    void ResetEncoder();
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);
+    double GetAverageEncoderDistance();
 
     double m_encoderdistance = encoder.GetDistance();
     double m_encoderrate = encoder.GetRate();

@@ -18,9 +18,11 @@
 #include <frc/XboxController.h>
 
 #include <frc2/command/Command.h>
+#include <frc2/command/Commands.h>
 #include <frc2/command/button/JoystickButton.h>
 
 // our includes
+#include "commands/Autos.h"
 #include "commands/ArmForwardCommand.h"
 #include "commands/ArmBackwardCommand.h"
 #include "commands/GrabberCloseCommand.h"
@@ -62,8 +64,16 @@ private:
     frc::Joystick m_joystick{0};
     frc::XboxController m_controller{1};
 
+    
+    // For Multiple Autos
+    // The chooser for the autonomous modes
     frc::SendableChooser<frc2::Command*> m_chooser;
-    AutonomousCommand m_autonomousCommand;
+    
+    // The autonomous modes
+    frc2::CommandPtr m_leftAuto = autos::LeftAuto(&m_arm, &m_drive, &m_grabber, &m_limelight);
+    frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber, &m_limelight);
+    frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber, &m_limelight);
+
     static RobotContainer* m_robotContainer;
 
     void ConfigureButtonBindings();
