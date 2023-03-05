@@ -70,9 +70,9 @@ private:
     frc::SendableChooser<frc2::Command*> m_chooser;
     
     // The autonomous modes
-    frc2::CommandPtr m_leftAuto = autos::LeftAuto(&m_arm, &m_drive, &m_grabber, &m_limelight);
-    //frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber, &m_limelight);
-    //frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber, &m_limelight);
+    frc2::CommandPtr m_leftAuto = autos::LeftAuto(&m_arm, &m_drive, &m_grabber);
+    frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber);
+    frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber);
 
     static RobotContainer* m_robotContainer;
 

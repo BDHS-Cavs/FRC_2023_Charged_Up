@@ -15,18 +15,18 @@
 namespace autos {
 
 /**
+ * An autonomous mode that is used when the robot is in the CENTER position.
+ */
+frc2::CommandPtr CenterAuto(Arm* arm, Drive* drive, Grabber* grabber);
+
+/**
  * An autonomous mode that is used when the robot is in the LEFT position.
  */
-frc2::CommandPtr LeftAuto(Arm* arm, Drive* drive, Grabber* grabber, Limelight* limelight);
+frc2::CommandPtr LeftAuto(Arm* arm, Drive* drive, Grabber* grabber);
 
 /**
  * An autonomous mode that is used when the robot is in the RIGHT position.
  */
-frc2::CommandPtr RightAuto(Arm* arm, Drive* drive, Grabber* grabber, Limelight* limelight);
-
-/**
- * An autonomous mode that is used when the robot is in the RIGHT position.
- */
-frc2::CommandPtr CenterAuto(Arm* arm, Drive* drive, Grabber* grabber, Limelight* limelight);
+frc2::CommandPtr RightAuto(Arm* arm, Drive* drive, Grabber* grabber);
 
 }  // namespace autos
