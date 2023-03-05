@@ -105,8 +105,9 @@ bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
     };
 }
 
-double Drive::GetAverageEncoderDistance() {
+bool Drive::CalculateAverageEncoderDistance() {
     // do nothing here, yet
+    return true;
 }
 
 void Drive::Stop(){

@@ -8,28 +8,28 @@
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/FunctionalCommand.h>
 
-
 frc2::CommandPtr autos::LeftAuto(Arm* arm, Drive* drive, Grabber* grabber, Limelight* limelight) {
   return frc2::FunctionalCommand(
 
-             // drive reset encoders on init
-             [drive]
-             { drive->ResetEncoder(); },
+    // onInit - drive reset encoders 
+    [drive]
+    { drive->ResetEncoder(); }, // returns void
 
-             // drive forward while the command is executing
-             [drive]
-             { drive->AutoMotivateForward(); },
+    // onExecute - drive forward per the command
+    [drive]
+    { drive->AutoMotivateForward(); }, // returns void
 
-             // stop driving at the end of the command
-             [drive](bool interrupted)
-             { drive->Stop(); },
+    // onEnd - stop driving 
+    [drive](bool interrupted)
+    { drive->Stop(); }, // returns void
 
-             // calculate average encoder distance (for the future)
-             [drive] 
-             { drive->GetAverageEncoderDistance(); },
+    // isFinished - calculate average encoder distance (for the future)
+    [drive] 
+    { return drive->CalculateAverageEncoderDistance(); }, // returns bool
 
-             // requires the drive subsystem
-             {drive});
+    // requirements - this requires only the drive subsystem
+    {drive})
+ .ToPtr();
 }
 
 //frc2::commandptr autos::simpleauto(drivesubsystem* drive) {

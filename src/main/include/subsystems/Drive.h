@@ -48,7 +48,7 @@ public:
     void ResetEncoder();
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);
-    double GetAverageEncoderDistance();
+    bool CalculateAverageEncoderDistance();
 
     double m_encoderdistance = encoder.GetDistance();
     double m_encoderrate = encoder.GetRate();
