@@ -12,11 +12,11 @@ frc2::CommandPtr autos::CenterAuto(Arm* arm, Drive* drive, Grabber* grabber) {
   return frc2::FunctionalCommand(
              // onInit - drive reset encoders
              [drive, grabber]
-             { drive->ResetEncoder(); grabber->GrabberClose();}, // returns void
+             { drive->ResetEncoder(); grabber->CompressorEnable();}, // returns void
 
              // onExecute - drive forward per the command
              [drive, grabber]
-             { drive->AutoMotivateForward(); grabber->GrabberOpen();}, // returns void
+             { drive->AutoMotivateForward(); grabber->GrabberCloseOpenAutonomous();}, // returns void
 
              // onEnd - stop driving
              [drive, grabber](bool interrupted)
@@ -33,48 +33,46 @@ frc2::CommandPtr autos::CenterAuto(Arm* arm, Drive* drive, Grabber* grabber) {
 
 frc2::CommandPtr autos::LeftAuto(Arm* arm, Drive* drive, Grabber* grabber) {
   return frc2::FunctionalCommand(
+             // onInit - drive reset encoders
+             [drive, grabber]
+             { drive->ResetEncoder(); grabber->CompressorEnable();}, // returns void
 
-    // onInit - drive reset encoders 
-    [drive]
-    { drive->ResetEncoder(); }, // returns void
+             // onExecute - drive forward per the command
+             [drive, grabber]
+             { drive->AutoMotivateForwardBackward(); grabber->GrabberCloseOpenAutonomous();}, // returns void
 
-    // onExecute - drive forward per the command
-    [drive]
-    { drive->AutoMotivateForward(); }, // returns void
+             // onEnd - stop driving
+             [drive, grabber](bool interrupted)
+             { drive->Stop(); grabber->GrabberStop();}, // returns void
 
-    // onEnd - stop driving 
-    [drive](bool interrupted)
-    { drive->Stop(); }, // returns void
+             // isFinished - calculate average encoder distance (for the future)
+             [drive, grabber]
+             { return drive->CalculateAverageEncoderDistance(); return grabber->GrabberDontStop();}, // returns bool
 
-    // isFinished - calculate average encoder distance (for the future)
-    [drive] 
-    { return drive->CalculateAverageEncoderDistance(); }, // returns bool
-
-    // requirements - this requires only the drive subsystem
-    {drive})
- .ToPtr();
+             // requirements - this requires only the drive subsystem
+             {drive, grabber})
+      .ToPtr();
 }
 
 frc2::CommandPtr autos::RightAuto(Arm* arm, Drive* drive, Grabber* grabber) {
   return frc2::FunctionalCommand(
+             // onInit - drive reset encoders
+             [drive, grabber]
+             { drive->ResetEncoder(); grabber->CompressorEnable();}, // returns void
 
-    // onInit - drive reset encoders 
-    [drive]
-    { drive->ResetEncoder(); }, // returns void
+             // onExecute - drive forward per the command
+             [drive, grabber]
+             { drive->AutoMotivateForwardBackward(); grabber->GrabberCloseOpenAutonomous();}, // returns void
 
-    // onExecute - drive forward per the command
-    [drive]
-    { drive->AutoMotivateForward(); }, // returns void
+             // onEnd - stop driving
+             [drive, grabber](bool interrupted)
+             { drive->Stop(); grabber->GrabberStop();}, // returns void
 
-    // onEnd - stop driving 
-    [drive](bool interrupted)
-    { drive->Stop(); }, // returns void
+             // isFinished - calculate average encoder distance (for the future)
+             [drive, grabber]
+             { return drive->CalculateAverageEncoderDistance(); return grabber->GrabberDontStop();}, // returns bool
 
-    // isFinished - calculate average encoder distance (for the future)
-    [drive] 
-    { return drive->CalculateAverageEncoderDistance(); }, // returns bool
-
-    // requirements - this requires only the drive subsystem
-    {drive})
- .ToPtr();
+             // requirements - this requires only the drive subsystem
+             {drive, grabber})
+      .ToPtr();
 }

@@ -15,6 +15,7 @@
 #include <frc/motorcontrol/Spark.h>
 #include <frc/Encoder.h>
 #include <frc2/command/SubsystemBase.h>
+#include <frc2/command/WaitCommand.h>
 
 class Drive: public frc2::SubsystemBase {
 
@@ -43,7 +44,7 @@ public:
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
     void AutoMotivateForward();
-    void AutoMotivateBackward();
+    void AutoMotivateForwardBackward();
     void AutoMotivateRotate();
     void ResetEncoder();
     void Stop();

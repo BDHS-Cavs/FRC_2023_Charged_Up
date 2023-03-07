@@ -63,7 +63,7 @@ void AutonomousCommand::Execute() {
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
         m_grabber->GrabberStop(); // stop the Grabber
-        m_drive->AutoMotivateBackward(); // drive backwards 8 to 10 feet - about 3 seconds
+        m_drive->AutoMotivateForwardBackward(); // drive backwards 8 to 10 feet - about 3 seconds
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
     {

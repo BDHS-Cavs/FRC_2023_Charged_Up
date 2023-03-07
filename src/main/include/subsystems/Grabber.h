@@ -14,6 +14,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/DoubleSolenoid.h>
 #include <frc/Compressor.h>
+#include <frc2/command/WaitCommand.h>
 
 class Grabber: public frc2::SubsystemBase {
 
@@ -32,4 +33,5 @@ public:
     void CompressorDisable();
     void GrabberStop();
     bool GrabberDontStop();
+    void GrabberCloseOpenAutonomous();
 };

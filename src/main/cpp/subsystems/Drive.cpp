@@ -58,22 +58,33 @@ void Drive::AutoMotivateForward() {
 
     double autoForwardXSpeed  = 0.50;
     double autoForwardYSpeed  = 0.50;
-
+    frc2::WaitCommand(4.0_s); //wait 4 seconds to move (waiting for grabber to close) (4)
     m_differentialDrive.ArcadeDrive(autoForwardXSpeed, autoForwardYSpeed, true);
-
+    frc2::WaitCommand(4.0_s); //wait 4 seconds to move forward then stop (8)
+    this->Stop();
     frc::SmartDashboard::PutNumber("AutoMotivateForward X Speed", autoForwardXSpeed);
     frc::SmartDashboard::PutNumber("AutomotivateForward Y Speed", autoForwardYSpeed);
 }
 
-void Drive::AutoMotivateBackward() {
+void Drive::AutoMotivateForwardBackward() {
 
-    double autoXSpeed  = 0.65;
-    double autoYSpeed  = 0.0;
+    double autoForwardXSpeed  = 0.50;
+    double autoForwardYSpeed  = 0.50;
+    frc2::WaitCommand(4.0_s); //wait 4 seconds to move (waiting for grabber to close) (4)
+    m_differentialDrive.ArcadeDrive(autoForwardXSpeed, autoForwardYSpeed, true);
+    frc2::WaitCommand(4.0_s); //wait 4 seconds to move forward then stop (8)
+    this->Stop();
+    frc2::WaitCommand(1.0_s); //wait 1 second to drop off the loaded game piece (9)
+    frc::SmartDashboard::PutNumber("AutoMotivateForward X Speed", autoForwardXSpeed);
+    frc::SmartDashboard::PutNumber("AutomotivateForward Y Speed", autoForwardYSpeed);
 
-    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
-
-    frc::SmartDashboard::PutNumber("AutoMotivateBackward X Speed", autoXSpeed);
-    frc::SmartDashboard::PutNumber("AutomotivateBackward Y Speed", autoYSpeed);
+    double autoBackwardXSpeed  = -0.50;
+    double autoBackwardYSpeed  = -0.50;
+    m_differentialDrive.ArcadeDrive(autoBackwardXSpeed, autoBackwardYSpeed, true);
+    frc2::WaitCommand(4.0_s); //wait 4 seconds to finish going backward and then stop (13)
+    this->Stop();
+    frc::SmartDashboard::PutNumber("AutoMotivateBackward X Speed", autoBackwardXSpeed);
+    frc::SmartDashboard::PutNumber("AutomotivateBackward Y Speed", autoBackwardYSpeed);
 }
 
 void Drive::AutoMotivateRotate() {

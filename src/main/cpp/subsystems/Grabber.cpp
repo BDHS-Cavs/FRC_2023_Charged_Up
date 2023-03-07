@@ -62,3 +62,11 @@ void Grabber::GrabberStop(){
 bool Grabber::GrabberDontStop(){
     return true; // written to meet the API of the functional command
 }
+
+void Grabber::GrabberCloseOpenAutonomous(){ //autonomous open grabber
+    //Enable the Compressor
+frc2::WaitCommand(3.0_s); //wait 3 seconds (for compressor to be ready) then close grabber (3)
+this->GrabberClose();
+frc2::WaitCommand(5.0_s); //wait 3 seconds to drive to the goal (8)
+this->GrabberOpen();
+}
