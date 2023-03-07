@@ -58,3 +58,7 @@ void Grabber::GrabberStop(){
     // Stop the Grabber
     m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kOff); //TODO: Is this correct?
 }
+
+bool Grabber::GrabberDontStop(){
+    return true; // written to meet the API of the functional command
+}

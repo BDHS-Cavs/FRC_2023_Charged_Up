@@ -31,4 +31,5 @@ public:
     void CompressorEnable();
     void CompressorDisable();
     void GrabberStop();
+    bool GrabberDontStop();
 };
