@@ -46,6 +46,7 @@ public:
     void AutoMotivateForward();
     void AutoMotivateForwardBackward();
     void AutoMotivateRotate();
+    void AutoMotivateBackward();
     void ResetEncoder();
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);

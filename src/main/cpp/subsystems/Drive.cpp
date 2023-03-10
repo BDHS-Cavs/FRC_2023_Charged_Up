@@ -98,6 +98,12 @@ void Drive::AutoMotivateRotate() {
     frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
 }
 
+void Drive::AutoMotivateBackward() {
+    double autoXSpeed = -0.3;
+    double autoYSpeed = -0.3;
+    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
+}
+
 void Drive::ResetEncoder() {
     // is there something to do here?
 }
