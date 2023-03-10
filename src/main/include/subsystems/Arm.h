@@ -16,6 +16,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/DoubleSolenoid.h>
+#include <frc2/command/WaitCommand.h>
 
 class Arm: public frc2::SubsystemBase {
 
@@ -30,8 +31,7 @@ private:
     //frc::DigitalInput frontLimitSwitch{2}; //tuned value
     //frc::DigitalInput backLimitSwitch{5}; //tuned value
     //frc::AnalogPotentiometer potentiometer{0, 180, 30};
-        
-        bool armspeed;
+    
 
 public:
     Arm();
@@ -44,6 +44,8 @@ public:
     void ArmBackward();
     void ArmPivotStop();
     void ArmExtendStop();
-    void ArmSpeedUp();
+    void AutoArmBackward();
+    void ArmLock();
+    void ArmUnlock();
     //double m_potentiometer = potentiometer.Get();
 };

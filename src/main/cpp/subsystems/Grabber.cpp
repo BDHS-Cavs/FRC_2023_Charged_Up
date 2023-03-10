@@ -70,3 +70,7 @@ this->GrabberClose();
 frc2::WaitCommand(5.0_s); //wait 3 seconds to drive to the goal (8)
 this->GrabberOpen();
 }
+
+void Grabber::GrabberOpenAutonomous(){
+    m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+}

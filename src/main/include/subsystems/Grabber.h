@@ -33,5 +33,6 @@ public:
     void CompressorDisable();
     void GrabberStop();
     bool GrabberDontStop();
-    void GrabberCloseOpenAutonomous();
+    void GrabberCloseOpenAutonomous(); //remove?
+    void GrabberOpenAutonomous();
 };

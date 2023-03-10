@@ -14,6 +14,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include <frc/Timer.h>
+#include <frc2/command/WaitCommand.h> //todo remove
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"

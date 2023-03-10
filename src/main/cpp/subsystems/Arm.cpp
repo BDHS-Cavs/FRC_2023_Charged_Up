@@ -27,14 +27,12 @@ Arm::Arm(){
     m_armPivotMotor2.SetInverted(true);
     m_armPivotMotor1.SetInverted(false);
     m_armExtendMotor.SetInverted(false);
-    armspeed = false;
 }
 
 void Arm::Periodic() {
     // Put code here to be run every loop
     //frc::SmartDashboard::PutNumber("Arm Angle : ", m_potentiometer);
-        frc::SmartDashboard::PutNumber("Arm Speed", armspeed);
-        frc::SmartDashboard::PutNumber("Arm MOTOR Speed", armspeed);
+        frc::SmartDashboard::PutNumber("Arm Speed", m_armPivotMotors.Get());
 }
 
 void Arm::SimulationPeriodic() {
@@ -44,59 +42,48 @@ void Arm::SimulationPeriodic() {
 
 void Arm::ArmExtend(){ 
     // Extend Arm 
-        m_armExtendMotor.Set(0.5); 
+        m_armExtendMotor.Set(0.67); 
 }
 
 void Arm::ArmRetract(){ 
     // Retract Arm 
-        m_armExtendMotor.Set(-0.5); 
+        m_armExtendMotor.Set(-0.67); 
 }
 
 void Arm::ArmForward(){ 
     // Raise Arm
     m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
-    if(armspeed==0)
-    {
-    m_armPivotMotors.Set(-0.5);
-    }
-    else if(armspeed==1)
-    {
-    m_armPivotMotors.Set(-0.8);
-    }
+    m_armPivotMotors.Set(-0.4);
+}
+
+void Arm::AutoArmBackward(){
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+    m_armPivotMotors.Set(0.23);
+    
+}
+
+void Arm::ArmLock(){
+    frc2::WaitCommand(1.0_s);
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
+}
+
+void Arm::ArmUnlock(){
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
 }
 
 void Arm::ArmBackward(){
     // Lower Arm
     m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
-    if(armspeed==0)
-    {
-    m_armPivotMotors.Set(0.5);
-    }
-    else if(armspeed==1)
-    {
-    m_armPivotMotors.Set(0.8);
-    }
+    m_armPivotMotors.Set(0.4);
 }
 
 void Arm::ArmPivotStop(){
     // stop the arm
-    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+    m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
     m_armPivotMotors.Set(0.0);
 }
 
 void Arm::ArmExtendStop(){
     // stop the arm
     m_armExtendMotor.Set(0.0);
-}
-
-void Arm::ArmSpeedUp(){
-    //speed up the arm
-    if(armspeed==0)
-    {
-    int armspeed = 1;
-    }
-    else if(armspeed==1)
-    {
-    int armspeed=0;
-    }
 }

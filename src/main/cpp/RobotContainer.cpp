@@ -53,23 +53,21 @@ RobotContainer* RobotContainer::GetInstance() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};           // Arm raise (2)
+frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};           // Arm Retract (2)
 frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY};           // Arm lower (4)
 frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper};  // Intake (5)
 frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
-frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           // Arm Extend (1)
-frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Arm Retract (3)
+frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           // Arm Raise or lower? (1)
+frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Arm Extend (3)
 frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};        // Compressor Enable (7)
-frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};       // Arm Speed Up/Slow Down Toggle (8)
 
-m_controllerButton2.WhileTrue(ArmBackwardCommand(&m_arm).ToPtr());             // Arm backward (2)
+m_controllerButton2.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());             // Arm Retract (2)
 m_controllerButton4.WhileTrue(ArmForwardCommand(&m_arm).ToPtr());              // Arm forward (4)
 m_controllerButton5.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr());           // Grabber close (5)
 m_controllerButton6.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());            // Grabber open (6)
-m_controllerButton1.WhileTrue(ArmExtendCommand(&m_arm).ToPtr());               // Arm Extend (1)
-m_controllerButton3.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());              // Arm Retract (3)
+m_controllerButton1.WhileTrue(ArmBackwardCommand(&m_arm).ToPtr());               // Arm Extend (1)
+m_controllerButton3.WhileTrue(ArmExtendCommand(&m_arm).ToPtr());              // Arm Extend (3)
 m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); // Compressor Enable (7)
-m_controllerButton8.ToggleOnTrue(ArmSpeedUpCommand(&m_arm).ToPtr());           // Arm Speed Up/Slow Down Toggle (8)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

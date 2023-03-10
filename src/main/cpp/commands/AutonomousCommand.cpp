@@ -42,9 +42,9 @@ void AutonomousCommand::Initialize() {
 void AutonomousCommand::Execute() {
 
     units::second_t period1 = 1_s;
-    units::second_t period2 = 2_s;
+    units::second_t period2 = 3_s;
     units::second_t period3 = 5_s;
-    units::second_t period4 = 8_s;
+    units::second_t period4 = 9_s;
     
     if(m_firstTime)
     {
@@ -62,21 +62,28 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
-        m_grabber->GrabberStop(); // stop the Grabber
-        m_drive->AutoMotivateForwardBackward(); // drive backwards 8 to 10 feet - about 3 seconds
+        m_grabber->CompressorEnable(); // enable the compressor
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
     {
-        m_arm->ArmForward(); // lower the arm
+        m_arm->ArmUnlock();
+        m_arm->ArmLock();
+        m_arm->ArmUnlock(); //unlock solenoid
+        frc2::WaitCommand(1_s);
+        m_arm->AutoArmBackward(); //lower the arm
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4)
     {
-        m_drive->AutoMotivateRotate(); // turn 180 degrees to the left
+        m_grabber->GrabberClose(); //release the piece (todo rename to open)
+        m_arm->ArmLock(); //lock arm
+        m_arm->ArmUnlock(); //unlock arm
+        m_arm->ArmLock(); //lock the arm
     }
     else
     {
         // do nothing
     }
+    
 }
 
 // Make this return true when this Command no longer needs to run execute()
