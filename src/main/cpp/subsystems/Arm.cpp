@@ -53,7 +53,7 @@ void Arm::ArmRetract(){
 void Arm::ArmForward(){ 
     // Raise Arm
     m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
-    m_armPivotMotors.Set(-0.4);
+    m_armPivotMotors.Set(-0.55);
 }
 
 void Arm::AutoArmBackward(){
@@ -74,7 +74,7 @@ void Arm::ArmUnlock(){
 void Arm::ArmBackward(){
     // Lower Arm
     m_armLockSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
-    m_armPivotMotors.Set(0.4);
+    m_armPivotMotors.Set(0.2);
 }
 
 void Arm::ArmPivotStop(){

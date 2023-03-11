@@ -42,11 +42,9 @@ void AutonomousCommand::Initialize() {
 void AutonomousCommand::Execute() {
 
     units::second_t period1 = 1_s;
-    units::second_t period2 = 5_s;
-    units::second_t period3 = 7_s;
-    units::second_t period4 = 9_s;
-    units::second_t period5 = 11_s;
-    units::second_t period6 = 12_s;
+    units::second_t period2 = 3_s;
+    units::second_t period3 = 5_s;
+    units::second_t period4 = 10_s;
     
     if(m_firstTime)
     {
@@ -58,15 +56,15 @@ void AutonomousCommand::Execute() {
 
     frc::SmartDashboard::PutNumber("Autonomous Command Timer", double(m_timer.Get()));
 
-    if (m_timer.Get() >= units::second_t(0_s) && m_timer.Get() < period1) //period 0
+    if (m_timer.Get() >= units::second_t(0_s) && m_timer.Get() < period1)
     {
         //do nothing
     }
-    else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //period 1 (starts at 1s) (ends at 5s) (4s)
+    else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
         m_grabber->CompressorEnable(); // enable the compressor
     }
-    else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //period 2 (starts at 5s) (ends at 7s) (2s)
+    else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
     {
         m_arm->ArmUnlock();
         m_arm->ArmLock();
@@ -74,20 +72,13 @@ void AutonomousCommand::Execute() {
         frc2::WaitCommand(1_s);
         m_arm->AutoArmBackward(); //lower the arm
     }
-    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //period 3 (starts at 7s) (ends at 9s) (2s)
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4)
     {
         m_grabber->GrabberClose(); //release the piece (todo rename to open)
         m_arm->ArmLock(); //lock arm
         m_arm->ArmUnlock(); //unlock arm
         m_arm->ArmLock(); //lock the arm
-    }
-    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //period 4 (starts at 9s) (ends at 11s) (2s)
-    {
-        m_drive->AutoMotivateBackward(); //COMMENT THIS OUT IF WE ARE IN THE MIDDLE
-    }
-    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //period 5 (starts at 11s) (ends at 12s) (1s)
-    {
-        m_drive->Stop();
+        m_drive->AutoBackLeft(); //move backwards
     }
     else
     {

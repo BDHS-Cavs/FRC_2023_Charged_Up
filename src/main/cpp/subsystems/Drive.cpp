@@ -51,7 +51,7 @@ void Drive::SimulationPeriodic() {
 // Functions called by robot commands
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
-    m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
+    m_differentialDrive.ArcadeDrive(leftSpeed, rightSpeed, true);
 }
 
 void Drive::AutoMotivateForward() {
@@ -89,19 +89,15 @@ void Drive::AutoMotivateForwardBackward() {
 
 void Drive::AutoMotivateRotate() {
 
-    double autoXSpeed = 0.25;
-    double autoYSpeed = -0.85;
-
-    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
-
-    frc::SmartDashboard::PutNumber("AutoMotivateRotate X Speed", autoXSpeed);
-    frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
+    double autoLeftSpeed = 1;
+    double autoRightSpeed = -1;
+    m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
 }
 
 void Drive::AutoMotivateBackward() {
-    double autoXSpeed = -0.3;
-    double autoYSpeed = -0.3;
-    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
+    double autoBackwardsXSpeed = -0.3;
+    double autoBackwardsYSpeed = -0.3;
+    m_differentialDrive.ArcadeDrive(autoBackwardsXSpeed, autoBackwardsYSpeed, true);
 }
 
 void Drive::ResetEncoder() {
@@ -130,4 +126,10 @@ bool Drive::CalculateAverageEncoderDistance() {
 void Drive::Stop(){
     // cease your actions!!
     m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
+}
+
+void Drive::AutoBackLeft(){
+    double autoBackLeftSpeed = 0.55;
+    double autoBackRightSpeed = 0; //rotation!!!!!
+    m_differentialDrive.ArcadeDrive(autoBackLeftSpeed, autoBackRightSpeed, true);
 }

@@ -46,6 +46,7 @@ public:
     void AutoMotivateForward();
     void AutoMotivateForwardBackward();
     void AutoMotivateRotate();
+    void AutoBackLeft();
     void AutoMotivateBackward();
     void ResetEncoder();
     void Stop();
