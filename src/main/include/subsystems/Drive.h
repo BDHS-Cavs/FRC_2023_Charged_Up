@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <frc/ADXRS450_Gyro.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
@@ -32,10 +33,12 @@ private:
     frc::MotorControllerGroup m_controllerRight{m_leftFront, m_leftFront};
     frc::MotorControllerGroup m_controllerLeft{m_rightFront, m_rightRear};
 
-    frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};
+    frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight}; //might have to change left and right to make turning work
 
 // Initializes an encoder on DIO pins 0 and 1
     frc::Encoder encoder{0, 1, true, frc::Encoder::EncodingType::k1X}; // inverted and 1x
+    
+    frc::ADXRS450_Gyro m_gyro;
     
 public:
     Drive();
@@ -43,16 +46,14 @@ public:
     void Periodic() override;
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
-    void AutoMotivateForward();
-    void AutoMotivateForwardBackward();
     void AutoMotivateRotate();
-    void AutoBackLeft();
-    void AutoMotivateBackward();
+    void AutoBackwards();
     void ResetEncoder();
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);
     bool CalculateAverageEncoderDistance();
+    void AutoGyroCrawl();
 
-    double m_encoderdistance = encoder.GetDistance();
-    double m_encoderrate = encoder.GetRate();
+    double m_encoderdistance = encoder.GetDistance(); //does nothing because no encoders
+    double m_encoderrate = encoder.GetRate(); //does nothing
 };

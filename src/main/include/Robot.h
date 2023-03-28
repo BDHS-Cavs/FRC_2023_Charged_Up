@@ -17,6 +17,7 @@
 #include "RobotContainer.h"
 
 #include <cameraserver/CameraServer.h>
+#include <frc/ADXRS450_Gyro.h>
 
 class Robot : public frc::TimedRobot {
  public:
@@ -36,5 +37,7 @@ class Robot : public frc::TimedRobot {
   frc2::Command* m_autonomousCommand = nullptr;
 
   RobotContainer* m_container = RobotContainer::GetInstance();
+
+  frc::ADXRS450_Gyro m_gyro;
 
 };

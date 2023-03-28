@@ -36,12 +36,14 @@ Drive::Drive(){
 
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
+
+    AddChild("m_gyro", &m_gyro);
 }
 
 void Drive::Periodic() {
     // Put code here to be run every loop
-    frc::SmartDashboard::PutNumber("Encoder Distance : ", m_encoderdistance);
-    frc::SmartDashboard::PutNumber("Encoder Rate : ", m_encoderrate);
+    //frc::SmartDashboard::PutNumber("Encoder Distance : ", m_encoderdistance);
+    //frc::SmartDashboard::PutNumber("Encoder Rate : ", m_encoderrate);
 }
 
 void Drive::SimulationPeriodic() {
@@ -54,39 +56,6 @@ void Drive::Motivate(double leftSpeed, double rightSpeed) {
     m_differentialDrive.ArcadeDrive(leftSpeed, rightSpeed, true);
 }
 
-void Drive::AutoMotivateForward() {
-
-    double autoForwardXSpeed  = 0.50;
-    double autoForwardYSpeed  = 0.50;
-    frc2::WaitCommand(4.0_s); //wait 4 seconds to move (waiting for grabber to close) (4)
-    m_differentialDrive.ArcadeDrive(autoForwardXSpeed, autoForwardYSpeed, true);
-    frc2::WaitCommand(4.0_s); //wait 4 seconds to move forward then stop (8)
-    this->Stop();
-    frc::SmartDashboard::PutNumber("AutoMotivateForward X Speed", autoForwardXSpeed);
-    frc::SmartDashboard::PutNumber("AutomotivateForward Y Speed", autoForwardYSpeed);
-}
-
-void Drive::AutoMotivateForwardBackward() {
-
-    double autoForwardXSpeed  = 0.50;
-    double autoForwardYSpeed  = 0.50;
-    frc2::WaitCommand(4.0_s); //wait 4 seconds to move (waiting for grabber to close) (4)
-    m_differentialDrive.ArcadeDrive(autoForwardXSpeed, autoForwardYSpeed, true);
-    frc2::WaitCommand(4.0_s); //wait 4 seconds to move forward then stop (8)
-    this->Stop();
-    frc2::WaitCommand(1.0_s); //wait 1 second to drop off the loaded game piece (9)
-    frc::SmartDashboard::PutNumber("AutoMotivateForward X Speed", autoForwardXSpeed);
-    frc::SmartDashboard::PutNumber("AutomotivateForward Y Speed", autoForwardYSpeed);
-
-    double autoBackwardXSpeed  = -0.50;
-    double autoBackwardYSpeed  = -0.50;
-    m_differentialDrive.ArcadeDrive(autoBackwardXSpeed, autoBackwardYSpeed, true);
-    frc2::WaitCommand(4.0_s); //wait 4 seconds to finish going backward and then stop (13)
-    this->Stop();
-    frc::SmartDashboard::PutNumber("AutoMotivateBackward X Speed", autoBackwardXSpeed);
-    frc::SmartDashboard::PutNumber("AutomotivateBackward Y Speed", autoBackwardYSpeed);
-}
-
 void Drive::AutoMotivateRotate() {
 
     double autoLeftSpeed = 1;
@@ -94,11 +63,6 @@ void Drive::AutoMotivateRotate() {
     m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
 }
 
-void Drive::AutoMotivateBackward() {
-    double autoBackwardsXSpeed = -0.3;
-    double autoBackwardsYSpeed = -0.3;
-    m_differentialDrive.ArcadeDrive(autoBackwardsXSpeed, autoBackwardsYSpeed, true);
-}
 
 void Drive::ResetEncoder() {
     // is there something to do here?
@@ -128,8 +92,21 @@ void Drive::Stop(){
     m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }
 
-void Drive::AutoBackLeft(){
-    double autoBackLeftSpeed = 0.55;
-    double autoBackRightSpeed = 0; //rotation!!!!!
-    m_differentialDrive.ArcadeDrive(autoBackLeftSpeed, autoBackRightSpeed, true);
+void Drive::AutoBackwards(){
+    double autoBackwardsLeftSpeed = 0.55;
+    double autoBackwardsRightSpeed = 0; //rotation!!!!!
+    m_differentialDrive.ArcadeDrive(autoBackwardsLeftSpeed, autoBackwardsRightSpeed, true);
+}
+
+void Drive::AutoGyroCrawl(){
+    m_differentialDrive.ArcadeDrive(0.55, 0.0, true); //drive back for a bit until gyro goes 0.1 to -0.1 (tuned value not real angles)
+    if(m_gyro.GetAngle()>0.1){ //tuned value
+    m_differentialDrive.ArcadeDrive(0.2, 0.0, true);
+    }
+    else if(m_gyro.GetAngle()<-0.1){ //tuned value
+    m_differentialDrive.ArcadeDrive(-0.2, 0.0, true);
+    }
+    else{ //if gyro is 0.09 to -0.09 (tuned value not real angles)
+    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
+    }
 }

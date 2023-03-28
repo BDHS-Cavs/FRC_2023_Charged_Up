@@ -41,10 +41,10 @@ void AutonomousCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
 
-    units::second_t period1 = 1_s;
-    units::second_t period2 = 3_s;
-    units::second_t period3 = 5_s;
-    units::second_t period4 = 10_s;
+    units::second_t period1 = 1_s; //starts at 1 (2s)
+    units::second_t period2 = 3_s; //starts at 3 (3s)
+    units::second_t period3 = 5_s; //starts at 5 (5s)
+    units::second_t period4 = 10_s; //starts at 10
     
     if(m_firstTime)
     {
@@ -60,11 +60,11 @@ void AutonomousCommand::Execute() {
     {
         //do nothing
     }
-    else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
+    else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 (2s)
     {
         m_grabber->CompressorEnable(); // enable the compressor
     }
-    else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
+    else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 (3s)
     {
         m_arm->ArmUnlock();
         m_arm->ArmLock();
@@ -72,13 +72,13 @@ void AutonomousCommand::Execute() {
         frc2::WaitCommand(1_s);
         m_arm->AutoArmBackward(); //lower the arm
     }
-    else if(m_timer.Get() >= period3 && m_timer.Get() < period4)
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 10 (5s)
     {
         m_grabber->GrabberClose(); //release the piece (todo rename to open)
         m_arm->ArmLock(); //lock arm
         m_arm->ArmUnlock(); //unlock arm
         m_arm->ArmLock(); //lock the arm
-        m_drive->AutoBackLeft(); //move backwards
+        m_drive->AutoGyroCrawl(); //move backwards and if gyro goes off angle then crawl
     }
     else
     {
