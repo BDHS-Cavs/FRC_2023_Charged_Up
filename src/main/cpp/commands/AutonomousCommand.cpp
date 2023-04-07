@@ -74,7 +74,7 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 10 (5s)
     {
-        m_grabber->GrabberClose(); //release the piece (todo rename to open)
+        m_grabber->GrabberOpen(); //release the piece (todo rename to open)
         m_arm->ArmLock(); //lock arm
         m_arm->ArmUnlock(); //unlock arm
         m_arm->ArmLock(); //lock the arm

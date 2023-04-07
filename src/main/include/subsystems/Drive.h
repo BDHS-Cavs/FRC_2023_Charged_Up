@@ -54,6 +54,6 @@ public:
     bool CalculateAverageEncoderDistance();
     void AutoGyroCrawl();
 
-    double m_encoderdistance = encoder.GetDistance(); //does nothing because no encoders
+    double m_encoderdistance = encoder.GetDistance(); //does nothing because no encoders - these were made for autos.h which doesnt work
     double m_encoderrate = encoder.GetRate(); //does nothing
 };

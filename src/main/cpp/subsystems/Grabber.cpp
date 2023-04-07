@@ -33,12 +33,12 @@ void Grabber::SimulationPeriodic() {
 
 void Grabber::GrabberOpen(){
     //Open the Grabber
-    m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kForward); //TODO: Is this the right direction?
+    m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kReverse); //TODO: Is this the right direction?
 }
 
 void Grabber::GrabberClose(){
     //Close the Grabber
-    m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kReverse); //TODO: Is this the right direction?
+    m_grabberSolenoid.Set(frc::DoubleSolenoid::Value::kForward); //TODO: Is this the right direction?
 }
 
 void Grabber::CompressorEnable(){
