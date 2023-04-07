@@ -37,7 +37,7 @@ Drive::Drive(){
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
 
-    AddChild("m_gyro", &m_gyro);
+    AddChild("m_drivegyro", &m_drivegyro);
 }
 
 void Drive::Periodic() {
@@ -45,7 +45,7 @@ void Drive::Periodic() {
     //frc::SmartDashboard::PutNumber("Encoder Distance : ", m_encoderdistance);
     //frc::SmartDashboard::PutNumber("Encoder Rate : ", m_encoderrate);
     
-    //frc::SmartDashboard::PutNumber("Gyro Angle : ", m_gyro.GetAngle());
+    frc::SmartDashboard::PutNumber("Gyro Angle : ", m_drivegyro.GetAngle());
 }
 
 void Drive::SimulationPeriodic() {
@@ -102,10 +102,10 @@ void Drive::AutoBackwards(){
 
 void Drive::AutoGyroCrawl(){
     m_differentialDrive.ArcadeDrive(0.55, 0.0, true); //drive back for a bit until gyro goes 0.1 to -0.1 (tuned value not real angles)
-    if(m_gyro.GetAngle()>0.1){ //tuned value
+    if(m_drivegyro.GetAngle()>0.1){ //tuned value
     m_differentialDrive.ArcadeDrive(0.2, 0.0, true);
     }
-    else if(m_gyro.GetAngle()<-0.1){ //tuned value
+    else if(m_drivegyro.GetAngle()<-0.1){ //tuned value
     m_differentialDrive.ArcadeDrive(-0.2, 0.0, true);
     }
     else{ //if gyro is 0.09 to -0.09 (tuned value not real angles)

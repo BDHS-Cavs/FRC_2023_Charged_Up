@@ -38,6 +38,6 @@ class Robot : public frc::TimedRobot {
 
   RobotContainer* m_container = RobotContainer::GetInstance();
 
-  frc::ADXRS450_Gyro m_gyro;
+  frc::ADXRS450_Gyro m_robotgyro;
 
 };

@@ -21,7 +21,7 @@ void Robot::RobotInit() {
 //code to be run
 frc::CameraServer::GetVideo();
 frc::CameraServer::StartAutomaticCapture();
-m_gyro.Calibrate();
+m_robotgyro.Calibrate();
 }
 
 /**
