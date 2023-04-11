@@ -30,7 +30,7 @@ private:
     frc::Spark m_rightFront{4};
     frc::Spark m_rightRear{5};
 
-    frc::MotorControllerGroup m_controllerRight{m_leftFront, m_leftFront};
+    frc::MotorControllerGroup m_controllerRight{m_leftFront, m_leftRear};
     frc::MotorControllerGroup m_controllerLeft{m_rightFront, m_rightRear};
 
     frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight}; //might have to change left and right to make turning work
