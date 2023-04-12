@@ -44,8 +44,9 @@ void AutonomousCommand::Execute() {
     units::second_t period1 = 1_s; //starts at 1 (2s)
     units::second_t period2 = 3_s; //starts at 3 (3s)
     units::second_t period3 = 5_s; //starts at 5 (5s)
-    units::second_t period4 = 10_s; //starts at 10
-    
+    units::second_t period4 = 6_s; //starts at 6 (1s)
+    units::second_t period5 = 8_s; //starts at 8 (2s)
+
     if(m_firstTime)
     {
         m_timer.Reset();
@@ -72,12 +73,15 @@ void AutonomousCommand::Execute() {
         frc2::WaitCommand(1_s);
         m_arm->AutoArmBackward(); //lower the arm
     }
-    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 10 (5s)
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 6 (1s)
     {
-        m_grabber->GrabberOpen(); //release the piece (todo rename to open)
+        m_grabber->GrabberOpen(); //release the piece
         m_arm->ArmLock(); //lock arm
         m_arm->ArmUnlock(); //unlock arm
         m_arm->ArmLock(); //lock the arm
+    }
+    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 6 ends at 8 (1s)
+    {
         m_drive->AutoGyroCrawl(); //move backwards and if gyro goes off angle then crawl
     }
     else
