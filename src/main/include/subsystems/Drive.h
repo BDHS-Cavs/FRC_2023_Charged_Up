@@ -15,6 +15,7 @@
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
 #include <frc/Encoder.h>
+#include <frc/ADXRS450_Gyro.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc2/command/WaitCommand.h>
 
@@ -38,7 +39,7 @@ private:
 // Initializes an encoder on DIO pins 0 and 1
     frc::Encoder encoder{0, 1, true, frc::Encoder::EncodingType::k1X}; // inverted and 1x
     
-    //frc::ADXRS450_Gyro m_drivegyro;
+    frc::ADXRS450_Gyro m_drivegyro;
     
 public:
     Drive();

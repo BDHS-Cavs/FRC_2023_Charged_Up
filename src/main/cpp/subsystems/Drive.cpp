@@ -102,13 +102,13 @@ void Drive::AutoBackwards(){
 
 void Drive::AutoGyroCrawl(){
     m_differentialDrive.ArcadeDrive(0.55, 0.0, true); //drive back for a bit until gyro goes 0.1 to -0.1 (tuned value not real angles)
-    //if(m_drivegyro.GetAngle()>0.1){ //tuned value
-    //m_differentialDrive.ArcadeDrive(0.2, 0.0, true);
-    //}
-    //else if(m_drivegyro.GetAngle()<-0.1){ //tuned value
-    //m_differentialDrive.ArcadeDrive(-0.2, 0.0, true);
-    //}
-    //else{ //if gyro is 0.09 to -0.09 (tuned value not real angles)
-    //m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
-    //}
+    if(m_drivegyro.GetAngle() > 0.1){ //tuned value
+    m_differentialDrive.ArcadeDrive(0.2, 0.0, true);
+    }
+    else if(m_drivegyro.GetAngle() < -0.1){ //tuned value
+    m_differentialDrive.ArcadeDrive(-0.2, 0.0, true);
+    }
+    else{ //if gyro is 0.09 to -0.09 (tuned value not real angles)
+    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
+    }
 }
