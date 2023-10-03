@@ -51,6 +51,7 @@ public:
     bool CalculateAverageEncoderDistance();
     void AutoGyroCrawl();
     void GyroCalibrate();
+    void GyroReset();
     frc::ADXRS450_Gyro m_drivegyro;
     frc::BuiltInAccelerometer m_accelerometer;
 

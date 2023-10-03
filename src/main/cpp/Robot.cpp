@@ -21,7 +21,8 @@ void Robot::RobotInit() {
 //code to be run
 frc::CameraServer::GetVideo();
 frc::CameraServer::StartAutomaticCapture();
-m_container->m_drive.m_drivegyro.Calibrate();
+m_container->m_drive.GyroReset();
+m_container->m_drive.GyroCalibrate(); //calibrate is also on a button
 }
 
 /**
@@ -36,6 +37,8 @@ void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
   frc::SmartDashboard::PutNumber("Gyro Angle : ", m_container->m_drive.m_drivegyro.GetAngle());
   frc::SmartDashboard::PutNumber("Gyro Rate : ", m_container->m_drive.m_drivegyro.GetRate());
+  frc::SmartDashboard::PutNumber("Gyro Port : ", m_container->m_drive.m_drivegyro.GetPort());
+  frc::SmartDashboard::PutNumber("Gyro Connected? : ", m_container->m_drive.m_drivegyro.IsConnected());
   frc::SmartDashboard::PutNumber("Accelerometer X : ", m_container->m_drive.m_accelerometer.GetX());
   frc::SmartDashboard::PutNumber("Accelerometer Y : ", m_container->m_drive.m_accelerometer.GetY());
   frc::SmartDashboard::PutNumber("Acceletometer Z : ", m_container->m_drive.m_accelerometer.GetZ());

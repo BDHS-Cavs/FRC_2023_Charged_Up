@@ -115,3 +115,7 @@ void Drive::AutoGyroCrawl(){
 void Drive::GyroCalibrate(){
     m_drivegyro.Calibrate();
 }
+
+void Drive::GyroReset(){
+    m_drivegyro.Reset();
+}
