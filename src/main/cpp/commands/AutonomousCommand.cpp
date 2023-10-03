@@ -67,22 +67,22 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3s ends at 5s (2s)
     {
-        m_arm->ArmUnlock();
-        m_arm->ArmLock();
-        m_arm->ArmUnlock(); //unlock solenoid
-        frc2::WaitCommand(0.5_s);
+        m_arm->ArmUnlock(); //unlock solenoid part 1
+        m_arm->ArmLock(); //unlock solenoid part 2
+        m_arm->ArmUnlock(); //unlock solenoid part 3 finish
+        frc2::WaitCommand(0.5_s); //wait 0.5 seconds
         m_arm->AutoArmBackward(); //lower the arm
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5s ends at 6s (1s)
     {
-        m_grabber->GrabberOpen(); //release the piece
+        m_grabber->GrabberOpen(); //grabber open   release the piece
         m_arm->ArmLock(); //lock arm
         m_arm->ArmUnlock(); //unlock arm
         m_arm->ArmLock(); //lock the arm
     }
     else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 8s ends at 15s (7s)
     {
-        m_drive->AutoGyroCrawl();
+        m_drive->AutoGyroCrawl(); //go backwards until at a gyro angle then start crawling
     }
     else
     {
