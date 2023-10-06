@@ -82,7 +82,8 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 8s ends at 15s (7s)
     {
-        m_drive->AutoGyroCrawl(); //go backwards until at a gyro angle then start crawling
+        //m_drive->AutoGyroCrawl(); //go backwards until at a gyro angle then start crawling
+        m_drive->AutoBackwards(); //only use if crawl isnt working
     }
     else
     {

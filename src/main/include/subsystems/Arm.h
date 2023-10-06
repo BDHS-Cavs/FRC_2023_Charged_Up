@@ -27,7 +27,6 @@ private:
     frc::Spark m_armExtendMotor{0}; //tuned value
 
     frc::DoubleSolenoid m_armLockSolenoid{frc::PneumaticsModuleType::REVPH, 2, 3}; //TODO: Correct Module Type? && Tuned Values
-
     //frc::DigitalInput frontLimitSwitch{2}; //tuned value
     //frc::DigitalInput backLimitSwitch{5}; //tuned value
     //frc::AnalogPotentiometer potentiometer{0, 180, 30};
