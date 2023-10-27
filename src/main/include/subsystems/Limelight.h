@@ -4,24 +4,26 @@
 
 #include <frc2/command/SubsystemBase.h>
 
-//#include <photonlib/PhotonCamera.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include "span"
 
 #include "networktables/NetworkTable.h"
 #include "networktables/NetworkTableEntry.h"
 #include "networktables/NetworkTableInstance.h"
+#include "span"
 
-using namespace std;
 
 class Limelight: public frc2::SubsystemBase {
 
 private:
+std::shared_ptr<nt::NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 
-    //std::shared_ptr<nt::NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight")->GetNumberArray("tid",std::vector<double>(6));
-//    std::shared_ptr<nt::NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
     double m_targetArea = table->GetNumber("ta", 0.0);
     double m_targetHorizontalOffset = table->GetNumber("tx", 0.0);
     double m_targetValid = table->GetNumber("tv", 0.0);
     double m_targetVerticalOffset = table->GetNumber("ty", 0.0);
+    int m_lltid = table->GetNumber("tid",0.0);
+    double m_llbotpose = table->GetNumber("botpose",0.0);
     
 public:
     Limelight();
@@ -30,3 +32,4 @@ public:
     void SimulationPeriodic() override;
     void Update();
 };
+
