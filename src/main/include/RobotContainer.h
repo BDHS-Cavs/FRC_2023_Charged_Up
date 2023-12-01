@@ -33,6 +33,7 @@
 #include "commands/CompressorEnableCommand.h"
 #include "commands/CompressorDisableCommand.h"
 #include "commands/GyroCalibrateCommand.h"
+#include "commands/CamBackwardsCommand.h"
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"

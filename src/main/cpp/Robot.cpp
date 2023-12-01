@@ -22,6 +22,7 @@ void Robot::RobotInit() {
 frc::CameraServer::GetVideo();
 frc::CameraServer::StartAutomaticCapture();
 m_container->m_drive.m_drivegyro.Calibrate();
+
 }
 
 /**
@@ -39,6 +40,14 @@ void Robot::RobotPeriodic() {
   frc::SmartDashboard::PutNumber("Accelerometer X : ", m_container->m_drive.m_accelerometer.GetX());
   frc::SmartDashboard::PutNumber("Accelerometer Y : ", m_container->m_drive.m_accelerometer.GetY());
   frc::SmartDashboard::PutNumber("Acceletometer Z : ", m_container->m_drive.m_accelerometer.GetZ());
+  //frc::SmartDashboard::PutNumber("cam target id", m_container->m_drive.targetID);
+
+  photonlib::PhotonPipelineResult CamResult = m_container->m_drive.camera.GetLatestResult();
+  bool hasTargets = CamResult.HasTargets();
+  while(hasTargets)
+  {
+    m_container->m_drive.AutoBackwards();
+  }
 }
 
 /**

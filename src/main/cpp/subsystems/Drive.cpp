@@ -12,6 +12,8 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
+#include <photonlib/PhotonUtils.h>
+
 Drive::Drive(){
     SetName("Drive");
     SetSubsystem("Drive");
@@ -99,17 +101,19 @@ void Drive::AutoBackwards(){
     m_differentialDrive.ArcadeDrive(autoBackwardsLeftSpeed, autoBackwardsRightSpeed, true);
 }
 
-void Drive::AutoGyroCrawl(){
-    //m_differentialDrive.ArcadeDrive(0.55, 0.0, true); //drive back for a bit until gyro goes 0.1 to -0.1 (tuned value not real angles)
-    //if(m_drivegyro.GetAngle() > 0.1){ //tuned value
-    //m_differentialDrive.ArcadeDrive(0.2, 0.0, true);
-    //}
-    //else if(m_drivegyro.GetAngle() < -0.1){ //tuned value
-    //m_differentialDrive.ArcadeDrive(-0.2, 0.0, true);
-    //}
-    //else{ //if gyro is 0.09 to -0.09 (tuned value not real angles)
-    //m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
-    //}
+void Drive::CamBackwards(){
+//photonlib::PhotonPipelineResult result = camera.GetLatestResult();
+//  double forwardSpeed = 0;
+//  double rotationSpeed;
+//if (result.HasTargets()) {
+//      // Rotation speed is the output of the PID controller
+//      rotationSpeed = -controller.Calculate(result.GetBestTarget().GetYaw(), 0);
+//    } else {
+//      // If we have no targets, stay still.
+//      rotationSpeed = 0;
+//    }
+//  // Use our forward/turn speeds to control the drivetrain
+//  m_differentialDrive.ArcadeDrive(forwardSpeed, rotationSpeed);
 }
 
 void Drive::GyroCalibrate(){

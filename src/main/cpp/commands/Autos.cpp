@@ -16,7 +16,7 @@ frc2::CommandPtr autos::CenterAuto(Arm* arm, Drive* drive, Grabber* grabber) {
 
              // onExecute - drive forward per the command
              [drive, grabber]
-             { drive->AutoGyroCrawl(); grabber->GrabberCloseOpenAutonomous();}, // returns void
+             { drive->CamBackwards(); grabber->GrabberCloseOpenAutonomous();}, // returns void
 
              // onEnd - stop driving
              [drive, grabber](bool interrupted)
@@ -39,7 +39,7 @@ frc2::CommandPtr autos::LeftAuto(Arm* arm, Drive* drive, Grabber* grabber) {
 
              // onExecute - drive forward per the command
              [drive, grabber]
-             { drive->AutoGyroCrawl(); grabber->GrabberCloseOpenAutonomous();}, // returns void
+             { drive->CamBackwards(); grabber->GrabberCloseOpenAutonomous();}, // returns void
 
              // onEnd - stop driving
              [drive, grabber](bool interrupted)
@@ -62,7 +62,7 @@ frc2::CommandPtr autos::RightAuto(Arm* arm, Drive* drive, Grabber* grabber) {
 
              // onExecute - drive forward per the command
              [drive, grabber]
-             { drive->AutoGyroCrawl(); grabber->GrabberCloseOpenAutonomous();}, // returns void
+             { drive->CamBackwards(); grabber->GrabberCloseOpenAutonomous();}, // returns void
 
              // onEnd - stop driving
              [drive, grabber](bool interrupted)

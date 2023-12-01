@@ -17,6 +17,12 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc2/command/WaitCommand.h>
 #include <frc/BuiltInAccelerometer.h>
+
+#include <photonlib/PhotonCamera.h>
+#include <frc/controller/PIDController.h>
+#include <units/angle.h>
+#include <units/length.h>
+
 class Drive: public frc2::SubsystemBase {
 
 private:
@@ -49,11 +55,12 @@ public:
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);
     bool CalculateAverageEncoderDistance();
-    void AutoGyroCrawl();
+    void CamBackwards();
     void GyroCalibrate();
     frc::ADXRS450_Gyro m_drivegyro;
     frc::BuiltInAccelerometer m_accelerometer;
-
+    photonlib::PhotonCamera camera{"OV5647"};
+    frc2::PIDController controller{.1, 0, 0};
     double m_encoderdistance = encoder.GetDistance(); //does nothing because no encoders - these were made for autos.h which doesnt work
     double m_encoderrate = encoder.GetRate(); //does nothing
 };

@@ -61,7 +61,7 @@ frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // grabber Close (6)
 
 frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};        // Compressor Enable (7)
-frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};       // Gyro Calibrate (8)
+frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};       // Cam Backwards (8)
 
 m_controllerButton2.WhileTrue(ArmBackwardCommand(&m_arm).ToPtr());               // Arm Backward (2)
 m_controllerButton4.WhileTrue(ArmForwardCommand(&m_arm).ToPtr());              // Arm forward (4)
@@ -71,7 +71,7 @@ m_controllerButton5.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());           //
 m_controllerButton6.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr());            // Grabber Close (6)
 
 m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); // Compressor Enable (7)
-m_controllerButton8.OnTrue(GyroCalibrateCommand(&m_drive).ToPtr());       // Gyro Calibrate (8)
+m_controllerButton8.OnTrue(CamBackwardsCommand(&m_drive).ToPtr());       // Cam Backwards (8)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {
