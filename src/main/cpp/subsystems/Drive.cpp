@@ -102,18 +102,18 @@ void Drive::AutoBackwards(){
 }
 
 void Drive::CamBackwards(){
-//photonlib::PhotonPipelineResult result = camera.GetLatestResult();
-//  double forwardSpeed = 0;
-//  double rotationSpeed;
-//if (result.HasTargets()) {
-//      // Rotation speed is the output of the PID controller
-//      rotationSpeed = -controller.Calculate(result.GetBestTarget().GetYaw(), 0);
-//    } else {
-//      // If we have no targets, stay still.
-//      rotationSpeed = 0;
-//    }
-//  // Use our forward/turn speeds to control the drivetrain
-//  m_differentialDrive.ArcadeDrive(forwardSpeed, rotationSpeed);
+photonlib::PhotonPipelineResult result = camera.GetLatestResult();
+  double forwardSpeed = 0;
+  double rotationSpeed;
+if (result.HasTargets()) {
+      // Rotation speed is the output of the PID controller
+      rotationSpeed = -controller.Calculate(result.GetBestTarget().GetYaw(), 0);
+    } else {
+      // If we have no targets, stay still.
+      rotationSpeed = 0;
+    }
+  // Use our forward/turn speeds to control the drivetrain
+  m_differentialDrive.ArcadeDrive(forwardSpeed, rotationSpeed);
 }
 
 void Drive::GyroCalibrate(){

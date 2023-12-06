@@ -41,13 +41,6 @@ void Robot::RobotPeriodic() {
   frc::SmartDashboard::PutNumber("Accelerometer Y : ", m_container->m_drive.m_accelerometer.GetY());
   frc::SmartDashboard::PutNumber("Acceletometer Z : ", m_container->m_drive.m_accelerometer.GetZ());
   //frc::SmartDashboard::PutNumber("cam target id", m_container->m_drive.targetID);
-
-  photonlib::PhotonPipelineResult CamResult = m_container->m_drive.camera.GetLatestResult();
-  bool hasTargets = CamResult.HasTargets();
-  while(hasTargets)
-  {
-    m_container->m_drive.AutoBackwards();
-  }
 }
 
 /**
